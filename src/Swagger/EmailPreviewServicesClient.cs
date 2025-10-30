@@ -4,6 +4,8 @@
 // </auto-generated>
 //----------------------
 
+#nullable enable
+
 #pragma warning disable 108 // Disable "CS0108 '{derivedDto}.ToJson()' hides inherited member '{dtoBase}.ToJson()'. Use the new keyword if hiding was intended."
 #pragma warning disable 114 // Disable "CS0114 '{derivedDto}.RaisePropertyChanged(String)' hides inherited member 'dtoBase.RaisePropertyChanged(String)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword."
 #pragma warning disable 472 // Disable "CS0472 The result of the expression is always 'false' since a value of type 'Int32' is never equal to 'null' of type 'Int32?'
@@ -1329,7 +1331,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<EmailTagStatistics> GetTagStatisticsAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string> filterKeys)
+        public virtual System.Threading.Tasks.Task<EmailTagStatistics> GetTagStatisticsAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string>? filterKeys)
         {
             return GetTagStatisticsAsync(analyticsTagId, filterKeys, System.Threading.CancellationToken.None);
         }
@@ -1343,7 +1345,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<EmailTagStatistics> GetTagStatisticsAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string> filterKeys, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<EmailTagStatistics> GetTagStatisticsAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string>? filterKeys, System.Threading.CancellationToken cancellationToken)
         {
             if (analyticsTagId == null)
                 throw new System.ArgumentNullException("analyticsTagId");
@@ -2867,7 +2869,7 @@ namespace EmailPreviewServices
         /// <param name="subject">Filter by subject (case-insensitive, substring match).</param>
         /// <returns>OK â€” a paginated list of previews.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<PaginatedPreviewDataLightResponse> GetPreviewListV2Async(int? page, int? perPage, SortBy? sortBy, SortDirection? sortDirection, string name, string subject)
+        public virtual System.Threading.Tasks.Task<PaginatedPreviewDataLightResponse> GetPreviewListV2Async(int? page, int? perPage, SortBy? sortBy, SortDirection? sortDirection, string? name, string? subject)
         {
             return GetPreviewListV2Async(page, perPage, sortBy, sortDirection, name, subject, System.Threading.CancellationToken.None);
         }
@@ -2897,7 +2899,7 @@ namespace EmailPreviewServices
         /// <param name="subject">Filter by subject (case-insensitive, substring match).</param>
         /// <returns>OK â€” a paginated list of previews.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PaginatedPreviewDataLightResponse> GetPreviewListV2Async(int? page, int? perPage, SortBy? sortBy, SortDirection? sortDirection, string name, string subject, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<PaginatedPreviewDataLightResponse> GetPreviewListV2Async(int? page, int? perPage, SortBy? sortBy, SortDirection? sortDirection, string? name, string? subject, System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4548,7 +4550,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<string> GetTrackingCodeAsync(string analyticsTagId, string key)
+        public virtual System.Threading.Tasks.Task<string> GetTrackingCodeAsync(string analyticsTagId, string? key)
         {
             return GetTrackingCodeAsync(analyticsTagId, key, System.Threading.CancellationToken.None);
         }
@@ -4562,7 +4564,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<string> GetTrackingCodeAsync(string analyticsTagId, string key, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<string> GetTrackingCodeAsync(string analyticsTagId, string? key, System.Threading.CancellationToken cancellationToken)
         {
             if (analyticsTagId == null)
                 throw new System.ArgumentNullException("analyticsTagId");
@@ -4650,7 +4652,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<FileResponse> ExportCsvAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string> keys, object body)
+        public virtual System.Threading.Tasks.Task<FileResponse> ExportCsvAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string>? keys, object body)
         {
             return ExportCsvAsync(analyticsTagId, keys, body, System.Threading.CancellationToken.None);
         }
@@ -4664,7 +4666,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileResponse> ExportCsvAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string> keys, object body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<FileResponse> ExportCsvAsync(string analyticsTagId, System.Collections.Generic.IEnumerable<string>? keys, object body, System.Threading.CancellationToken cancellationToken)
         {
             if (analyticsTagId == null)
                 throw new System.ArgumentNullException("analyticsTagId");
@@ -7488,7 +7490,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<FileResponse> GetAsync(string shareCode, string preview, string download)
+        public virtual System.Threading.Tasks.Task<FileResponse> GetAsync(string shareCode, string? preview, string? download)
         {
             return GetAsync(shareCode, preview, download, System.Threading.CancellationToken.None);
         }
@@ -7502,7 +7504,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileResponse> GetAsync(string shareCode, string preview, string download, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<FileResponse> GetAsync(string shareCode, string? preview, string? download, System.Threading.CancellationToken cancellationToken)
         {
             if (shareCode == null)
                 throw new System.ArgumentNullException("shareCode");
@@ -7590,7 +7592,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AuthToken> SocialLoginAsync(string providerId, string providerRedirectTo)
+        public virtual System.Threading.Tasks.Task<AuthToken> SocialLoginAsync(string providerId, string? providerRedirectTo)
         {
             return SocialLoginAsync(providerId, providerRedirectTo, System.Threading.CancellationToken.None);
         }
@@ -7604,7 +7606,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AuthToken> SocialLoginAsync(string providerId, string providerRedirectTo, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<AuthToken> SocialLoginAsync(string providerId, string? providerRedirectTo, System.Threading.CancellationToken cancellationToken)
         {
             if (providerId == null)
                 throw new System.ArgumentNullException("providerId");
@@ -7780,7 +7782,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<AccountRegistrationAuthenticated> RegisterSocialAsync(string providerId, string tariffPlanId, string providerRedirectTo, string paymentToken)
+        public virtual System.Threading.Tasks.Task<AccountRegistrationAuthenticated> RegisterSocialAsync(string providerId, string tariffPlanId, string? providerRedirectTo, string? paymentToken)
         {
             return RegisterSocialAsync(providerId, tariffPlanId, providerRedirectTo, paymentToken, System.Threading.CancellationToken.None);
         }
@@ -7794,7 +7796,7 @@ namespace EmailPreviewServices
         /// </remarks>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<AccountRegistrationAuthenticated> RegisterSocialAsync(string providerId, string tariffPlanId, string providerRedirectTo, string paymentToken, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<AccountRegistrationAuthenticated> RegisterSocialAsync(string providerId, string tariffPlanId, string? providerRedirectTo, string? paymentToken, System.Threading.CancellationToken cancellationToken)
         {
             if (providerId == null)
                 throw new System.ArgumentNullException("providerId");
@@ -8105,7 +8107,7 @@ namespace EmailPreviewServices
         {
             if (response == null || response.Content == null)
             {
-                return new ObjectResponseResult<T>(default(T), string.Empty);
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
             }
 
             if (ReadResponseAsString)
@@ -8114,7 +8116,7 @@ namespace EmailPreviewServices
                 try
                 {
                     var typedBody = System.Text.Json.JsonSerializer.Deserialize<T>(responseText, JsonSerializerSettings);
-                    return new ObjectResponseResult<T>(typedBody, responseText);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
                 }
                 catch (System.Text.Json.JsonException exception)
                 {
@@ -8129,7 +8131,7 @@ namespace EmailPreviewServices
                     using (var responseStream = await ReadAsStreamAsync(response.Content, cancellationToken).ConfigureAwait(false))
                     {
                         var typedBody = await System.Text.Json.JsonSerializer.DeserializeAsync<T>(responseStream, JsonSerializerSettings, cancellationToken).ConfigureAwait(false);
-                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
                     }
                 }
                 catch (System.Text.Json.JsonException exception)
@@ -8140,7 +8142,7 @@ namespace EmailPreviewServices
             }
         }
 
-        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value == null)
             {
@@ -8201,9 +8203,9 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8219,9 +8221,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domains")]
-        public System.Collections.Generic.ICollection<string> Domains { get; set; }
+        public System.Collections.Generic.ICollection<string> Domains { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8237,9 +8239,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domains")]
-        public System.Collections.Generic.ICollection<string> Domains { get; set; }
+        public System.Collections.Generic.ICollection<string> Domains { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8255,9 +8257,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string Status { get; set; }
+        public string Status { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8273,9 +8275,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public string Value { get; set; }
+        public string Value { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8291,9 +8293,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public int Count { get; set; }
+        public int Count { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8309,9 +8311,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string Domain { get; set; }
+        public string Domain { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8327,15 +8329,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string Domain { get; set; }
+        public string Domain { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("error")]
-        public string Error { get; set; }
+        public string Error { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("record")]
-        public string Record { get; set; }
+        public string Record { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8351,12 +8353,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string Domain { get; set; }
+        public string Domain { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("record")]
-        public string Record { get; set; }
+        public string Record { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8372,9 +8374,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("emails")]
-        public System.Collections.Generic.ICollection<string> Emails { get; set; }
+        public System.Collections.Generic.ICollection<string> Emails { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8390,9 +8392,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("links")]
-        public System.Collections.Generic.IDictionary<string, string> Links { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> Links { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8408,12 +8410,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("size")]
-        public string Size { get; set; }
+        public string Size { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string Url { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8429,15 +8431,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("ip")]
-        public string Ip { get; set; }
+        public string Ip { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public int Value { get; set; }
+        public int Value { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8453,9 +8455,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("links")]
-        public System.Collections.Generic.ICollection<LinkData> Links { get; set; }
+        public System.Collections.Generic.ICollection<LinkData> Links { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8471,9 +8473,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public int Value { get; set; }
+        public int Value { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8489,9 +8491,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("size")]
-        public string Size { get; set; }
+        public string Size { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8507,15 +8509,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string Domain { get; set; }
+        public string Domain { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("error")]
-        public string Error { get; set; }
+        public string Error { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("record")]
-        public string Record { get; set; }
+        public string Record { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8531,9 +8533,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
-        public string Domain { get; set; }
+        public string Domain { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8549,93 +8551,93 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("DMARC_RECORD_POLICY_NONE")]
-        public FlagDmarcRecordPolicyNone DMARC_RECORD_POLICY_NONE { get; set; }
+        public FlagDmarcRecordPolicyNone DMARC_RECORD_POLICY_NONE { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("DMARC_RECORD_NOT_IN_GLOCKAPPS")]
-        public FlagDmarcRecordNotingLockApps DMARC_RECORD_NOT_IN_GLOCKAPPS { get; set; }
+        public FlagDmarcRecordNotingLockApps DMARC_RECORD_NOT_IN_GLOCKAPPS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("DMARC_RECORD_MISSING")]
-        public FlagDmarcRecordPolicyNone DMARC_RECORD_MISSING { get; set; }
+        public FlagDmarcRecordPolicyNone DMARC_RECORD_MISSING { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("DMARC_RECORD_ERROR")]
-        public FlagDmarcRecordError DMARC_RECORD_ERROR { get; set; }
+        public FlagDmarcRecordError DMARC_RECORD_ERROR { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_AOL_INSPAM")]
-        public FlagGappsAolInspam GAPPS_AOL_INSPAM { get; set; }
+        public FlagGappsAolInspam GAPPS_AOL_INSPAM { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_BARRACUDA_BRTS")]
-        public FlagGappsBarracudaBrts GAPPS_BARRACUDA_BRTS { get; set; }
+        public FlagGappsBarracudaBrts GAPPS_BARRACUDA_BRTS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_BARRACUDA_EVIDENCE")]
-        public FlagGappsBarracudaEvidence GAPPS_BARRACUDA_EVIDENCE { get; set; }
+        public FlagGappsBarracudaEvidence GAPPS_BARRACUDA_EVIDENCE { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_BARRACUDA_STATUS")]
-        public FlagGappsBarracudaStatus GAPPS_BARRACUDA_STATUS { get; set; }
+        public FlagGappsBarracudaStatus GAPPS_BARRACUDA_STATUS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_BOOK_A_CALL")]
-        public FlagGappsBookACall GAPPS_BOOK_A_CALL { get; set; }
+        public FlagGappsBookACall GAPPS_BOOK_A_CALL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_EMAIL_SIZE_TOO_LARGE")]
-        public FlagGappsEmailSizeTooLarge GAPPS_EMAIL_SIZE_TOO_LARGE { get; set; }
+        public FlagGappsEmailSizeTooLarge GAPPS_EMAIL_SIZE_TOO_LARGE { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_GMAIL_IN_PROMOTIONS")]
-        public FlagGappsAolInspam GAPPS_GMAIL_IN_PROMOTIONS { get; set; }
+        public FlagGappsAolInspam GAPPS_GMAIL_IN_PROMOTIONS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_GMAIL_INSPAM")]
-        public FlagGappsAolInspam GAPPS_GMAIL_INSPAM { get; set; }
+        public FlagGappsAolInspam GAPPS_GMAIL_INSPAM { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_HAS_BROKEN_LINKS")]
-        public FlagGappsHasBrokenLinks GAPPS_HAS_BROKEN_LINKS { get; set; }
+        public FlagGappsHasBrokenLinks GAPPS_HAS_BROKEN_LINKS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_HOTMAIL_INSPAM")]
-        public FlagGappsAolInspam GAPPS_HOTMAIL_INSPAM { get; set; }
+        public FlagGappsAolInspam GAPPS_HOTMAIL_INSPAM { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_IMAGE_TOO_LARGE_V2")]
-        public FlagGappsImageTooLargeV2 GAPPS_IMAGE_TOO_LARGE_V2 { get; set; }
+        public FlagGappsImageTooLargeV2 GAPPS_IMAGE_TOO_LARGE_V2 { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_EXCHANGE_ORG_SCL")]
-        public FlagGappsExchangeOrgscl GAPPS_EXCHANGE_ORG_SCL { get; set; }
+        public FlagGappsExchangeOrgscl GAPPS_EXCHANGE_ORG_SCL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_EXCHANGE_ORG_PCL")]
-        public FlagGappsExchangeOrgscl GAPPS_EXCHANGE_ORG_PCL { get; set; }
+        public FlagGappsExchangeOrgscl GAPPS_EXCHANGE_ORG_PCL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_FOREFRONT_SCL")]
-        public FlagGappsExchangeOrgscl GAPPS_FOREFRONT_SCL { get; set; }
+        public FlagGappsExchangeOrgscl GAPPS_FOREFRONT_SCL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_ANTISPAM_BCL")]
-        public FlagGappsExchangeOrgscl GAPPS_ANTISPAM_BCL { get; set; }
+        public FlagGappsExchangeOrgscl GAPPS_ANTISPAM_BCL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_OUTLOOK_INSPAM")]
-        public FlagGappsAolInspam GAPPS_OUTLOOK_INSPAM { get; set; }
+        public FlagGappsAolInspam GAPPS_OUTLOOK_INSPAM { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_PLAIN_TEXT_TOO_SMALL")]
-        public FlagGappsEmailSizeTooLarge GAPPS_PLAIN_TEXT_TOO_SMALL { get; set; }
+        public FlagGappsEmailSizeTooLarge GAPPS_PLAIN_TEXT_TOO_SMALL { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_SENDER_SCORE")]
-        public FlagGappsSenderScore GAPPS_SENDER_SCORE { get; set; }
+        public FlagGappsSenderScore GAPPS_SENDER_SCORE { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_TOO_MANY_IMAGES")]
-        public FlagGappsTooManyImages GAPPS_TOO_MANY_IMAGES { get; set; }
+        public FlagGappsTooManyImages GAPPS_TOO_MANY_IMAGES { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_TOO_MANY_LINKS")]
-        public FlagGappsTooManyImages GAPPS_TOO_MANY_LINKS { get; set; }
+        public FlagGappsTooManyImages GAPPS_TOO_MANY_LINKS { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_TOTAL_IMAGES_SIZE_TOO_LARGE")]
-        public FlagGappsEmailSizeTooLarge GAPPS_TOTAL_IMAGES_SIZE_TOO_LARGE { get; set; }
+        public FlagGappsEmailSizeTooLarge GAPPS_TOTAL_IMAGES_SIZE_TOO_LARGE { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("GAPPS_YAHOO_INSPAM")]
-        public FlagGappsAolInspam GAPPS_YAHOO_INSPAM { get; set; }
+        public FlagGappsAolInspam GAPPS_YAHOO_INSPAM { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("RESPONSE_TIME_TOO_LONG")]
-        public FlagResponseTimeTooLong RESPONSE_TIME_TOO_LONG { get; set; }
+        public FlagResponseTimeTooLong RESPONSE_TIME_TOO_LONG { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("SPF_RECORD_ERROR")]
-        public FlagSpfRecordError SPF_RECORD_ERROR { get; set; }
+        public FlagSpfRecordError SPF_RECORD_ERROR { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("SPF_RECORD_MISSING")]
-        public FlagSpfRecordMissing SPF_RECORD_MISSING { get; set; }
+        public FlagSpfRecordMissing SPF_RECORD_MISSING { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8651,12 +8653,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataDmarcRecord Data { get; set; }
+        public DataDmarcRecord Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8672,12 +8674,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataDmarcRecordNotInGlockapps Data { get; set; }
+        public DataDmarcRecordNotInGlockapps Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8693,12 +8695,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataDmarcDomain Data { get; set; }
+        public DataDmarcDomain Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8714,12 +8716,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataEmails Data { get; set; }
+        public DataEmails Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8735,12 +8737,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataBarracudaBRTS Data { get; set; }
+        public DataBarracudaBRTS Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8756,12 +8758,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataBarracudaEvidence Data { get; set; }
+        public DataBarracudaEvidence Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8777,12 +8779,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataBarracudaStatus Data { get; set; }
+        public DataBarracudaStatus Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8798,12 +8800,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataBookACall Data { get; set; }
+        public DataBookACall Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8819,12 +8821,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataSize Data { get; set; }
+        public DataSize Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8840,12 +8842,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataMS Data { get; set; }
+        public DataMS Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8861,12 +8863,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataHasBrokenLinks Data { get; set; }
+        public DataHasBrokenLinks Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8882,12 +8884,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public System.Collections.Generic.ICollection<DataImageTooLarge> Data { get; set; }
+        public System.Collections.Generic.ICollection<DataImageTooLarge> Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8903,12 +8905,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataSenderScore Data { get; set; }
+        public DataSenderScore Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8924,12 +8926,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataCount Data { get; set; }
+        public DataCount Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8945,12 +8947,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataResponseTimeTooLong Data { get; set; }
+        public DataResponseTimeTooLong Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8966,12 +8968,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataSpfRecord Data { get; set; }
+        public DataSpfRecord Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -8987,12 +8989,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public DataSpfRecordMissing Data { get; set; }
+        public DataSpfRecordMissing Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9008,15 +9010,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("errorLevel")]
-        public string ErrorLevel { get; set; }
+        public string ErrorLevel { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("link")]
-        public string Link { get; set; }
+        public string Link { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("responseTimeMs")]
-        public string ResponseTimeMs { get; set; }
+        public string ResponseTimeMs { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9032,48 +9034,48 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("complete")]
-        public bool Complete { get; set; }
+        public bool Complete { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("dkim")]
-        public string Dkim { get; set; }
+        public string Dkim { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spf")]
-        public string Spf { get; set; }
+        public string Spf { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sender")]
-        public SpamCheckDataSender Sender { get; set; }
+        public SpamCheckDataSender Sender { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("inboxes")]
-        public System.Collections.Generic.ICollection<SpamCheckInboxData> Inboxes { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckInboxData> Inboxes { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spamFilters")]
-        public SpamCheckDataSpamFilters SpamFilters { get; set; }
+        public SpamCheckDataSpamFilters SpamFilters { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("dnsbl")]
-        public SpamCheckDataDnsbl Dnsbl { get; set; }
+        public SpamCheckDataDnsbl Dnsbl { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("summary")]
-        public SpamCheckDataSummary Summary { get; set; }
+        public SpamCheckDataSummary Summary { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9089,12 +9091,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("complete")]
-        public bool Complete { get; set; }
+        public bool Complete { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("servers")]
-        public System.Collections.Generic.ICollection<SpamCheckDataDnsblServers> Servers { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckDataDnsblServers> Servers { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9110,18 +9112,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("ipAddress")]
-        public string IpAddress { get; set; }
+        public string IpAddress { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("listedCount")]
-        public int ListedCount { get; set; }
+        public int ListedCount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("rdns")]
-        public string Rdns { get; set; }
+        public string Rdns { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("senderScore")]
-        public int SenderScore { get; set; }
+        public int SenderScore { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9137,30 +9139,30 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("ip")]
-        public string Ip { get; set; }
+        public string Ip { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
-        public string Score { get; set; }
+        public string Score { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("helo")]
-        public string Helo { get; set; }
+        public string Helo { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("returnPath")]
-        public string ReturnPath { get; set; }
+        public string ReturnPath { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("reverseHelo")]
-        public string ReverseHelo { get; set; }
+        public string ReverseHelo { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("reverseIp")]
-        public string ReverseIp { get; set; }
+        public string ReverseIp { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9176,18 +9178,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("spamAssassin")]
-        public SpamCheckDataSpamFiltersSpamAssassin SpamAssassin { get; set; }
+        public SpamCheckDataSpamFiltersSpamAssassin SpamAssassin { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("googleApps")]
-        public SpamCheckDataSpamFiltersGoogleApps GoogleApps { get; set; }
+        public SpamCheckDataSpamFiltersGoogleApps GoogleApps { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("barracuda")]
-        public SpamCheckDataSpamFiltersBarracuda Barracuda { get; set; }
+        public SpamCheckDataSpamFiltersBarracuda Barracuda { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("hwBarracuda")]
-        public SpamCheckDataSpamFiltersHwBarracuda HwBarracuda { get; set; }
+        public SpamCheckDataSpamFiltersHwBarracuda HwBarracuda { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9203,21 +9205,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
-        public double Score { get; set; }
+        public double Score { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("reason")]
-        public string Reason { get; set; }
+        public string Reason { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("reasonExtra")]
-        public string ReasonExtra { get; set; }
+        public string ReasonExtra { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9233,18 +9235,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("completed")]
-        public bool Completed { get; set; }
+        public bool Completed { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spam")]
-        public bool Spam { get; set; }
+        public bool Spam { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("phishy")]
-        public bool Phishy { get; set; }
+        public bool Phishy { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9260,21 +9262,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
-        public double Score { get; set; }
+        public double Score { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string Status { get; set; }
+        public string Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("brtsUrls")]
-        public System.Collections.Generic.ICollection<string> BrtsUrls { get; set; }
+        public System.Collections.Generic.ICollection<string> BrtsUrls { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("evidence")]
-        public System.Collections.Generic.ICollection<string> Evidence { get; set; }
+        public System.Collections.Generic.ICollection<string> Evidence { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9290,18 +9292,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("completed")]
-        public bool Completed { get; set; }
+        public bool Completed { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
-        public double Score { get; set; }
+        public double Score { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("headers")]
-        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckDataSpamFiltersSpamAssassinHeaders> Headers { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9317,15 +9319,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
-        public double Score { get; set; }
+        public double Score { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("tag")]
-        public string Tag { get; set; }
+        public string Tag { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9341,33 +9343,33 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("inbox")]
-        public int Inbox { get; set; }
+        public int Inbox { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("inboxAndOtherRates")]
-        public double InboxAndOtherRates { get; set; }
+        public double InboxAndOtherRates { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("inboxRate")]
-        public double InboxRate { get; set; }
+        public double InboxRate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("notDelivered")]
-        public int NotDelivered { get; set; }
+        public int NotDelivered { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("notDeliveredRate")]
-        public double NotDeliveredRate { get; set; }
+        public double NotDeliveredRate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("other")]
-        public int Other { get; set; }
+        public int Other { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("otherRate")]
-        public double OtherRate { get; set; }
+        public double OtherRate { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spam")]
-        public int Spam { get; set; }
+        public int Spam { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spamRate")]
-        public double SpamRate { get; set; }
+        public double SpamRate { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9383,60 +9385,60 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bimi")]
-        public string Bimi { get; set; }
+        public string Bimi { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("delay")]
-        public string Delay { get; set; }
+        public string Delay { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("deliveredIn")]
-        public long DeliveredIn { get; set; }
+        public long DeliveredIn { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("dkim")]
-        public string Dkim { get; set; }
+        public string Dkim { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("dmarc")]
-        public string Dmarc { get; set; }
+        public string Dmarc { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("finished")]
-        public bool Finished { get; set; }
+        public bool Finished { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("iType")]
-        public string IType { get; set; }
+        public string IType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("ip")]
-        public string Ip { get; set; }
+        public string Ip { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("providerGroupId")]
-        public string ProviderGroupId { get; set; }
+        public string ProviderGroupId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("received")]
-        public System.DateTimeOffset Received { get; set; }
+        public System.DateTimeOffset Received { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("seedAccountGroupId")]
-        public string SeedAccountGroupId { get; set; }
+        public string SeedAccountGroupId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("seedAccountId")]
-        public string SeedAccountId { get; set; }
+        public string SeedAccountId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("seedAccountRegionId")]
-        public string SeedAccountRegionId { get; set; }
+        public string SeedAccountRegionId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("seedName")]
-        public string SeedName { get; set; }
+        public string SeedName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spf")]
-        public string Spf { get; set; }
+        public string Spf { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("visible")]
-        public bool Visible { get; set; }
+        public bool Visible { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("gappsFlags")]
-        public System.Collections.Generic.ICollection<Flag> GappsFlags { get; set; }
+        public System.Collections.Generic.ICollection<Flag> GappsFlags { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9452,21 +9454,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accountId")]
-        public string AccountId { get; set; }
+        public string AccountId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("userId")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastName")]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9484,9 +9486,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9502,16 +9504,16 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKey")]
-        public string DeviceKey { get; set; }
+        public string DeviceKey { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter<DevicePreviewDataStatus>))]
-        public DevicePreviewDataStatus Status { get; set; }
+        public DevicePreviewDataStatus Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("preview")]
-        public DevicePreviewDataPreview Preview { get; set; }
+        public DevicePreviewDataPreview Preview { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9527,12 +9529,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("original")]
-        public string Original { get; set; }
+        public string Original { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("thumbnail")]
-        public string Thumbnail { get; set; }
+        public string Thumbnail { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9548,33 +9550,33 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("previews")]
-        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; }
+        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9590,9 +9592,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionTag")]
-        public string VersionTag { get; set; }
+        public string VersionTag { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9608,33 +9610,33 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionId")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionCreatedAt")]
-        public System.DateTimeOffset VersionCreatedAt { get; set; }
+        public System.DateTimeOffset VersionCreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionCreatedBy")]
-        public UserValue VersionCreatedBy { get; set; }
+        public UserValue VersionCreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionTag")]
-        public string VersionTag { get; set; }
+        public string VersionTag { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("current")]
-        public bool Current { get; set; }
+        public bool Current { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sharing")]
-        public EmailPreviewVersionSummaryDataSharing Sharing { get; set; }
+        public EmailPreviewVersionSummaryDataSharing Sharing { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("previews")]
-        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; }
+        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9650,12 +9652,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("shareCode")]
-        public string ShareCode { get; set; }
+        public string ShareCode { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9671,15 +9673,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("devices")]
-        public System.Collections.Generic.ICollection<string> Devices { get; set; }
+        public System.Collections.Generic.ICollection<string> Devices { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9695,36 +9697,36 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("emailAddress")]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("devices")]
-        public System.Collections.Generic.ICollection<string> Devices { get; set; }
+        public System.Collections.Generic.ICollection<string> Devices { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("deleteOnReceive")]
-        public bool DeleteOnReceive { get; set; }
+        public bool DeleteOnReceive { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9740,9 +9742,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("content")]
-        public System.Collections.Generic.ICollection<EmailContentData> Content { get; set; }
+        public System.Collections.Generic.ICollection<EmailContentData> Content { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9758,15 +9760,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("key")]
-        public string Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("settings")]
-        public System.Collections.Generic.IDictionary<string, string> Settings { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> Settings { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public string Data { get; set; }
+        public string Data { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9782,12 +9784,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public EmailBodyData Body { get; set; }
+        public EmailBodyData Body { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9803,27 +9805,27 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public EmailBodyData Body { get; set; }
+        public EmailBodyData Body { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9841,9 +9843,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9859,24 +9861,24 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9894,9 +9896,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9912,21 +9914,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("tenantId")]
-        public string TenantId { get; set; }
+        public string TenantId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("masterUserId")]
-        public string MasterUserId { get; set; }
+        public string MasterUserId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("billingCustomerId")]
-        public string BillingCustomerId { get; set; }
+        public string BillingCustomerId { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9945,7 +9947,7 @@ namespace EmailPreviewServices
         [System.ComponentModel.DataAnnotations.Required]
         public Username Name { get; set; } = new Username();
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9961,12 +9963,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastName")]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -9982,27 +9984,27 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("identityId")]
-        public string IdentityId { get; set; }
+        public string IdentityId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public Username Name { get; set; }
+        public Username Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("isNew")]
-        public bool IsNew { get; set; }
+        public bool IsNew { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("image")]
-        public UserImagePreviewData Image { get; set; }
+        public UserImagePreviewData Image { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10018,15 +10020,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("original")]
-        public string Original { get; set; }
+        public string Original { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("medium")]
-        public string Medium { get; set; }
+        public string Medium { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("small")]
-        public string Small { get; set; }
+        public string Small { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10042,9 +10044,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentToken")]
-        public string PaymentToken { get; set; }
+        public string PaymentToken { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10062,21 +10064,21 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spamAssassin")]
-        public bool SpamAssassin { get; set; }
+        public bool SpamAssassin { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("googleSpamFilter")]
-        public bool GoogleSpamFilter { get; set; }
+        public bool GoogleSpamFilter { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("barracuda")]
-        public bool Barracuda { get; set; }
+        public bool Barracuda { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("providers")]
-        public System.Collections.Generic.ICollection<string> Providers { get; set; }
+        public System.Collections.Generic.ICollection<string> Providers { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10092,18 +10094,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("devices")]
-        public System.Collections.Generic.ICollection<string> Devices { get; set; }
+        public System.Collections.Generic.ICollection<string> Devices { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10119,15 +10121,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("devices")]
-        public System.Collections.Generic.ICollection<string> Devices { get; set; }
+        public System.Collections.Generic.ICollection<string> Devices { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10143,9 +10145,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("keys")]
-        public System.Collections.Generic.ICollection<string> Keys { get; set; }
+        public System.Collections.Generic.ICollection<string> Keys { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10161,18 +10163,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("devices")]
-        public System.Collections.Generic.ICollection<string> Devices { get; set; }
+        public System.Collections.Generic.ICollection<string> Devices { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("deleteOnReceive")]
-        public bool DeleteOnReceive { get; set; }
+        public bool DeleteOnReceive { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10188,12 +10190,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public EmailBodyData Body { get; set; }
+        public EmailBodyData Body { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10209,9 +10211,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("html")]
-        public string Html { get; set; }
+        public string Html { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10229,9 +10231,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("refreshToken")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string RefreshToken1 { get; set; }
+        public string RefreshToken1 { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10247,12 +10249,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accessToken")]
-        public AuthTokenAccessToken AccessToken { get; set; }
+        public AuthTokenAccessToken AccessToken { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("refreshToken")]
-        public AuthTokenRefreshToken RefreshToken { get; set; }
+        public AuthTokenRefreshToken RefreshToken { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10268,12 +10270,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
-        public string Token { get; set; }
+        public string Token { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10289,12 +10291,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
-        public string Token { get; set; }
+        public string Token { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10310,12 +10312,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10333,9 +10335,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("name")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10351,12 +10353,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastName")]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10372,15 +10374,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public AccountUsersName Name { get; set; }
+        public AccountUsersName Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10398,9 +10400,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("newPassword")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 8)]
-        public string NewPassword { get; set; }
+        public string NewPassword { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10416,12 +10418,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("resetPasswordCode")]
-        public string ResetPasswordCode { get; set; }
+        public string ResetPasswordCode { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("newPassword")]
-        public string NewPassword { get; set; }
+        public string NewPassword { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10439,13 +10441,13 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("callbackUrl")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"https?://.*")]
-        public string CallbackUrl { get; set; }
+        public string CallbackUrl { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10461,9 +10463,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
-        public string ApiKey { get; set; }
+        public string ApiKey { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10479,9 +10481,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
-        public string ApiKey { get; set; }
+        public string ApiKey { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10499,9 +10501,9 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("activationCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string ActivationCode { get; set; }
+        public string ActivationCode { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10518,13 +10520,13 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("callbackUrl")]
         [System.ComponentModel.DataAnnotations.RegularExpression(@"https?://.*")]
-        public string CallbackUrl { get; set; }
+        public string CallbackUrl { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10541,19 +10543,19 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("tariffId")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string TariffId { get; set; }
+        public string TariffId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sendInvoice")]
-        public bool SendInvoice { get; set; }
+        public bool SendInvoice { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentToken")]
         [System.ComponentModel.DataAnnotations.StringLength(2147483647, MinimumLength = 1)]
-        public string PaymentToken { get; set; }
+        public string PaymentToken { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("endTrial")]
-        public bool EndTrial { get; set; }
+        public bool EndTrial { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10570,14 +10572,14 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(0.01D, double.MaxValue)]
-        public double Amount { get; set; }
+        public double Amount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("currencyCode")]
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.StringLength(3, MinimumLength = 3)]
-        public string CurrencyCode { get; set; }
+        public string CurrencyCode { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10595,12 +10597,12 @@ namespace EmailPreviewServices
         [System.Text.Json.Serialization.JsonPropertyName("interval")]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter<TariffPeriodInterval>))]
-        public TariffPeriodInterval Interval { get; set; }
+        public TariffPeriodInterval Interval { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public long Count { get; set; }
+        public long Count { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10616,55 +10618,55 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("price")]
-        public PriceData Price { get; set; }
+        public PriceData Price { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("period")]
-        public TariffPeriod Period { get; set; }
+        public TariffPeriod Period { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("trialStart")]
-        public System.DateTimeOffset TrialStart { get; set; }
+        public System.DateTimeOffset TrialStart { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("trialEnd")]
-        public System.DateTimeOffset TrialEnd { get; set; }
+        public System.DateTimeOffset TrialEnd { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subscribedAt")]
-        public System.DateTimeOffset SubscribedAt { get; set; }
+        public System.DateTimeOffset SubscribedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("endedAt")]
-        public System.DateTimeOffset EndedAt { get; set; }
+        public System.DateTimeOffset EndedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("currentPeriodStartedAt")]
-        public System.DateTimeOffset CurrentPeriodStartedAt { get; set; }
+        public System.DateTimeOffset CurrentPeriodStartedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("currentPeriodEndsAt")]
-        public System.DateTimeOffset CurrentPeriodEndsAt { get; set; }
+        public System.DateTimeOffset CurrentPeriodEndsAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("invoiceDaysDue")]
-        public long InvoiceDaysDue { get; set; }
+        public long InvoiceDaysDue { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sendInvoice")]
-        public bool SendInvoice { get; set; }
+        public bool SendInvoice { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("cancelAtPeriodEnd")]
-        public bool CancelAtPeriodEnd { get; set; }
+        public bool CancelAtPeriodEnd { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("billingPlanId")]
-        public string BillingPlanId { get; set; }
+        public string BillingPlanId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter<TariffSubscriptionDataStatus>))]
-        public TariffSubscriptionDataStatus Status { get; set; }
+        public TariffSubscriptionDataStatus Status { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10680,21 +10682,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public AccountUsersName Name { get; set; }
+        public AccountUsersName Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("password")]
-        public string Password { get; set; }
+        public string Password { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("tariffPlanId")]
-        public string TariffPlanId { get; set; }
+        public string TariffPlanId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentToken")]
-        public string PaymentToken { get; set; }
+        public string PaymentToken { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10710,12 +10712,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("account")]
-        public AccountData Account { get; set; }
+        public AccountData Account { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("masterUser")]
-        public UserData MasterUser { get; set; }
+        public UserData MasterUser { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10731,27 +10733,27 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("isNew")]
-        public bool IsNew { get; set; }
+        public bool IsNew { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("image")]
-        public string Image { get; set; }
+        public string Image { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("identityId")]
-        public string IdentityId { get; set; }
+        public string IdentityId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public Username Name { get; set; }
+        public Username Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
-        public bool Active { get; set; }
+        public bool Active { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10768,9 +10770,9 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
         [System.ComponentModel.DataAnnotations.Range(1L, long.MaxValue)]
-        public long Amount { get; set; }
+        public long Amount { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10786,9 +10788,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("clientSecret")]
-        public string ClientSecret1 { get; set; }
+        public string ClientSecret1 { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10804,30 +10806,30 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("price")]
-        public PriceData Price { get; set; }
+        public PriceData Price { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("period")]
-        public TariffPeriod Period { get; set; }
+        public TariffPeriod Period { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("trialDays")]
-        public long TrialDays { get; set; }
+        public long TrialDays { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("billingPlanId")]
-        public string BillingPlanId { get; set; }
+        public string BillingPlanId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10843,12 +10845,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public long Count { get; set; }
+        public long Count { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKey")]
-        public string DeviceKey { get; set; }
+        public string DeviceKey { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10864,12 +10866,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("time")]
-        public System.DateTimeOffset Time { get; set; }
+        public System.DateTimeOffset Time { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public long Count { get; set; }
+        public long Count { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10885,12 +10887,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("total")]
-        public System.Collections.Generic.ICollection<PreviewExecutionStatTotal> Total { get; set; }
+        public System.Collections.Generic.ICollection<PreviewExecutionStatTotal> Total { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("topDevices")]
-        public System.Collections.Generic.ICollection<PreviewExecutionStatTopDeviceKeys> TopDevices { get; set; }
+        public System.Collections.Generic.ICollection<PreviewExecutionStatTopDeviceKeys> TopDevices { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10906,9 +10908,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("hits")]
-        public System.Collections.Generic.ICollection<TenantApiUsageStatHits> Hits { get; set; }
+        public System.Collections.Generic.ICollection<TenantApiUsageStatHits> Hits { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10924,18 +10926,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("time")]
-        public System.DateTimeOffset Time { get; set; }
+        public System.DateTimeOffset Time { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("hitsCount")]
-        public long HitsCount { get; set; }
+        public long HitsCount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("maxRequestPerMinute")]
-        public long MaxRequestPerMinute { get; set; }
+        public long MaxRequestPerMinute { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("avgRequestPerMinute")]
-        public double AvgRequestPerMinute { get; set; }
+        public double AvgRequestPerMinute { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10951,24 +10953,24 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -10984,15 +10986,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("insertHeader")]
-        public string InsertHeader { get; set; }
+        public string InsertHeader { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("insertInBody")]
-        public string InsertInBody { get; set; }
+        public string InsertInBody { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("seedList")]
-        public System.Collections.Generic.ICollection<string> SeedList { get; set; }
+        public System.Collections.Generic.ICollection<string> SeedList { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11008,12 +11010,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
-        public System.Collections.Generic.ICollection<string> Value { get; set; }
+        public System.Collections.Generic.ICollection<string> Value { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11029,51 +11031,51 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bodySize")]
-        public long BodySize { get; set; }
+        public long BodySize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("contentLength")]
-        public string ContentLength { get; set; }
+        public string ContentLength { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("contentType")]
-        public string ContentType { get; set; }
+        public string ContentType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("error")]
-        public string Error { get; set; }
+        public string Error { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("redirects")]
-        public long Redirects { get; set; }
+        public long Redirects { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("responseTimeMs")]
-        public long ResponseTimeMs { get; set; }
+        public long ResponseTimeMs { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("skipped")]
-        public bool Skipped { get; set; }
+        public bool Skipped { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("skippedReason")]
-        public string SkippedReason { get; set; }
+        public string SkippedReason { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
-        public string Status { get; set; }
+        public string Status { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("statusCode")]
-        public long StatusCode { get; set; }
+        public long StatusCode { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subscribeLink")]
-        public bool SubscribeLink { get; set; }
+        public bool SubscribeLink { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("targetUrl")]
-        public string TargetUrl { get; set; }
+        public string TargetUrl { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string Text { get; set; }
+        public string Text { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("unsubscribeLink")]
-        public bool UnsubscribeLink { get; set; }
+        public bool UnsubscribeLink { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string Url { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11089,42 +11091,42 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bodySize")]
-        public long BodySize { get; set; }
+        public long BodySize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("htmlSize")]
-        public long HtmlSize { get; set; }
+        public long HtmlSize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("images")]
-        public System.Collections.Generic.ICollection<SpamCheckApiLink> Images { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckApiLink> Images { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("imagesCount")]
-        public long ImagesCount { get; set; }
+        public long ImagesCount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("imagesSize")]
-        public long ImagesSize { get; set; }
+        public long ImagesSize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("links")]
-        public System.Collections.Generic.ICollection<SpamCheckApiLink> Links { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckApiLink> Links { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("linksCount")]
-        public long LinksCount { get; set; }
+        public long LinksCount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("msgSize")]
-        public long MsgSize { get; set; }
+        public long MsgSize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("plainSize")]
-        public long PlainSize { get; set; }
+        public long PlainSize { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("projectId")]
-        public string ProjectId { get; set; }
+        public string ProjectId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("testId")]
-        public string TestId { get; set; }
+        public string TestId { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11140,15 +11142,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("providerId")]
-        public string ProviderId { get; set; }
+        public string ProviderId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("domains")]
-        public System.Collections.Generic.ICollection<string> Domains { get; set; }
+        public System.Collections.Generic.ICollection<string> Domains { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11164,12 +11166,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("providers")]
-        public System.Collections.Generic.ICollection<SpamCheckProvider> Providers { get; set; }
+        public System.Collections.Generic.ICollection<SpamCheckProvider> Providers { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11185,30 +11187,30 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("owner")]
-        public UserValue Owner { get; set; }
+        public UserValue Owner { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11224,24 +11226,24 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionId")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionCreatedAt")]
-        public System.DateTimeOffset VersionCreatedAt { get; set; }
+        public System.DateTimeOffset VersionCreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionCreatedBy")]
-        public UserValue VersionCreatedBy { get; set; }
+        public UserValue VersionCreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("versionTag")]
-        public string VersionTag { get; set; }
+        public string VersionTag { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("current")]
-        public bool Current { get; set; }
+        public bool Current { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sharing")]
-        public EmailPreviewVersionSummaryDataSharing Sharing { get; set; }
+        public EmailPreviewVersionSummaryDataSharing Sharing { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11257,33 +11259,33 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
-        public string Subject { get; set; }
+        public string Subject { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("body")]
-        public string Body { get; set; }
+        public string Body { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("previews")]
-        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; }
+        public System.Collections.Generic.ICollection<DevicePreviewData> Previews { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11299,19 +11301,19 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKey")]
-        public string DeviceKey { get; set; }
+        public string DeviceKey { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("category")]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter<DeviceKeyDataCategory>))]
-        public DeviceKeyDataCategory Category { get; set; }
+        public DeviceKeyDataCategory Category { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11327,24 +11329,24 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTimeOffset CreatedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("createdBy")]
-        public UserValue CreatedBy { get; set; }
+        public UserValue CreatedBy { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedAt")]
-        public System.DateTimeOffset LastModifiedAt { get; set; }
+        public System.DateTimeOffset LastModifiedAt { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("lastModifiedBy")]
-        public UserValue LastModifiedBy { get; set; }
+        public UserValue LastModifiedBy { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11360,28 +11362,28 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
-        public System.DateTimeOffset Timestamp { get; set; }
+        public System.DateTimeOffset Timestamp { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("openType")]
         [System.Text.Json.Serialization.JsonConverter(typeof(System.Text.Json.Serialization.JsonStringEnumConverter<EmailOpenDataOpenType>))]
-        public EmailOpenDataOpenType OpenType { get; set; }
+        public EmailOpenDataOpenType OpenType { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("openFromIp")]
-        public string OpenFromIp { get; set; }
+        public string OpenFromIp { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("duration")]
-        public double Duration { get; set; }
+        public double Duration { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("trackKey")]
-        public string TrackKey { get; set; }
+        public string TrackKey { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("userAgent")]
-        public EmailOpenDataUserAgent UserAgent { get; set; }
+        public EmailOpenDataUserAgent UserAgent { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("location")]
-        public LocationData Location { get; set; }
+        public LocationData Location { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11397,12 +11399,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("agentString")]
-        public string AgentString { get; set; }
+        public string AgentString { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("agentName")]
-        public string AgentName { get; set; }
+        public string AgentName { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11418,18 +11420,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("metrics")]
-        public EmailTagStatisticsMetrics Metrics { get; set; }
+        public EmailTagStatisticsMetrics Metrics { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("userAgents")]
-        public System.Collections.Generic.ICollection<EmailTagStatisticsUserAgents> UserAgents { get; set; }
+        public System.Collections.Generic.ICollection<EmailTagStatisticsUserAgents> UserAgents { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("locations")]
-        public System.Collections.Generic.ICollection<EmailTagStatisticsLocations> Locations { get; set; }
+        public System.Collections.Generic.ICollection<EmailTagStatisticsLocations> Locations { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("openList")]
-        public System.Collections.Generic.ICollection<EmailOpenData> OpenList { get; set; }
+        public System.Collections.Generic.ICollection<EmailOpenData> OpenList { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11445,12 +11447,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("location")]
-        public LocationData Location { get; set; }
+        public LocationData Location { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("opens")]
-        public int Opens { get; set; }
+        public int Opens { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11466,21 +11468,21 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("opens")]
-        public int Opens { get; set; }
+        public int Opens { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("unique")]
-        public int Unique { get; set; }
+        public int Unique { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("forwards")]
-        public int Forwards { get; set; }
+        public int Forwards { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("prints")]
-        public int Prints { get; set; }
+        public int Prints { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("avarageDuration")]
-        public long AvarageDuration { get; set; }
+        public long AvarageDuration { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11496,12 +11498,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("agentName")]
-        public string AgentName { get; set; }
+        public string AgentName { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("opens")]
-        public int Opens { get; set; }
+        public int Opens { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11517,15 +11519,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("latitude")]
-        public double Latitude { get; set; }
+        public double Latitude { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("longitude")]
-        public double Longitude { get; set; }
+        public double Longitude { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11541,15 +11543,15 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("account")]
-        public AccountData Account { get; set; }
+        public AccountData Account { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("masterUser")]
-        public UserData MasterUser { get; set; }
+        public UserData MasterUser { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
-        public AccountRegistrationAuthenticatedToken Token { get; set; }
+        public AccountRegistrationAuthenticatedToken Token { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11565,12 +11567,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accessToken")]
-        public AccountRegistrationAuthenticatedTokenAccessToken AccessToken { get; set; }
+        public AccountRegistrationAuthenticatedTokenAccessToken AccessToken { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("refreshToken")]
-        public AccountRegistrationAuthenticatedTokenAccessToken RefreshToken { get; set; }
+        public AccountRegistrationAuthenticatedTokenAccessToken RefreshToken { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11586,12 +11588,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
-        public string Token { get; set; }
+        public string Token { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("expiresAt")]
-        public System.DateTimeOffset ExpiresAt { get; set; }
+        public System.DateTimeOffset ExpiresAt { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11607,30 +11609,30 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("currency")]
-        public string Currency { get; set; }
+        public string Currency { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
-        public long Amount { get; set; }
+        public long Amount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("periodStart")]
-        public long PeriodStart { get; set; }
+        public long PeriodStart { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("periodEnd")]
-        public long PeriodEnd { get; set; }
+        public long PeriodEnd { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("customer")]
-        public string Customer { get; set; }
+        public string Customer { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("number")]
-        public string Number { get; set; }
+        public string Number { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("pdf")]
-        public string Pdf { get; set; }
+        public string Pdf { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11646,27 +11648,27 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accounting")]
-        public FeatureParametersAccounting Accounting { get; set; }
+        public FeatureParametersAccounting Accounting { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("analytics")]
-        public FeatureParametersAnalytics Analytics { get; set; }
+        public FeatureParametersAnalytics Analytics { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("api")]
-        public FeatureParametersApi Api { get; set; }
+        public FeatureParametersApi Api { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("editor")]
-        public FeatureParametersEditor Editor { get; set; }
+        public FeatureParametersEditor Editor { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("preview")]
-        public FeatureParametersPreview Preview { get; set; }
+        public FeatureParametersPreview Preview { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("previewInbox")]
-        public FeatureParametersPreviewInbox PreviewInbox { get; set; }
+        public FeatureParametersPreviewInbox PreviewInbox { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("spamCheck")]
-        public FeatureParametersSpamCheck SpamCheck { get; set; }
+        public FeatureParametersSpamCheck SpamCheck { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11683,9 +11685,9 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("maxUsersCount")]
         [System.ComponentModel.DataAnnotations.Range(-1, int.MaxValue)]
-        public int MaxUsersCount { get; set; }
+        public int MaxUsersCount { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11701,18 +11703,18 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("createAllowed")]
-        public bool CreateAllowed { get; set; }
+        public bool CreateAllowed { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("hitsCountPerTag")]
-        public int HitsCountPerTag { get; set; }
+        public int HitsCountPerTag { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("tagActivePeriod")]
-        public PeriodValue TagActivePeriod { get; set; }
+        public PeriodValue TagActivePeriod { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("exportAllowed")]
-        public bool ExportAllowed { get; set; }
+        public bool ExportAllowed { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11728,9 +11730,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("unlimitedRequestRate")]
-        public bool UnlimitedRequestRate { get; set; }
+        public bool UnlimitedRequestRate { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11746,9 +11748,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("emailCount")]
-        public int EmailCount { get; set; }
+        public int EmailCount { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11764,29 +11766,29 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("executeAllowed")]
-        public bool ExecuteAllowed { get; set; }
+        public bool ExecuteAllowed { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("previewCount")]
-        public int PreviewCount { get; set; }
+        public int PreviewCount { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("putWatermark")]
-        public bool PutWatermark { get; set; }
+        public bool PutWatermark { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKeysAvailable")]
-        public FeatureParametersPreviewDeviceKeysAvailable DeviceKeysAvailable { get; set; }
+        public FeatureParametersPreviewDeviceKeysAvailable DeviceKeysAvailable { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("priorityModifier")]
         [System.ComponentModel.DataAnnotations.Range(0D, 1D)]
-        public double PriorityModifier { get; set; }
+        public double PriorityModifier { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("maxVersionsPerPreview")]
         [System.ComponentModel.DataAnnotations.Range(-1, int.MaxValue)]
-        public int MaxVersionsPerPreview { get; set; }
+        public int MaxVersionsPerPreview { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("sharingAllowed")]
-        public bool SharingAllowed { get; set; }
+        public bool SharingAllowed { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11802,12 +11804,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("include")]
-        public System.Collections.Generic.ICollection<string> Include { get; set; }
+        public System.Collections.Generic.ICollection<string> Include { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("exclude")]
-        public System.Collections.Generic.ICollection<string> Exclude { get; set; }
+        public System.Collections.Generic.ICollection<string> Exclude { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11824,9 +11826,9 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("createCount")]
         [System.ComponentModel.DataAnnotations.Range(-1, int.MaxValue)]
-        public int CreateCount { get; set; }
+        public int CreateCount { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11842,9 +11844,9 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
-        public int Count { get; set; }
+        public int Count { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11861,17 +11863,17 @@ namespace EmailPreviewServices
 
         [System.Text.Json.Serialization.JsonPropertyName("day")]
         [System.ComponentModel.DataAnnotations.Range(0, int.MaxValue)]
-        public int Day { get; set; }
+        public int Day { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("month")]
         [System.ComponentModel.DataAnnotations.Range(0, int.MaxValue)]
-        public int Month { get; set; }
+        public int Month { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("year")]
         [System.ComponentModel.DataAnnotations.Range(0, int.MaxValue)]
-        public int Year { get; set; }
+        public int Year { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11890,21 +11892,21 @@ namespace EmailPreviewServices
         /// Current page number.
         /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("page")]
-        public int Page { get; set; }
+        public int Page { get; set; } = default!;
 
         /// <summary>
         /// Number of items per page.
         /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("perPage")]
-        public int PerPage { get; set; }
+        public int PerPage { get; set; } = default!;
 
         /// <summary>
         /// Total number of pages.
         /// </summary>
         [System.Text.Json.Serialization.JsonPropertyName("totalPages")]
-        public int TotalPages { get; set; }
+        public int TotalPages { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -11920,12 +11922,12 @@ namespace EmailPreviewServices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
-        public System.Collections.Generic.ICollection<PreviewDataLight> Data { get; set; }
+        public System.Collections.Generic.ICollection<PreviewDataLight> Data { get; set; } = default!;
 
         [System.Text.Json.Serialization.JsonPropertyName("meta")]
-        public Meta Meta { get; set; }
+        public Meta Meta { get; set; } = default!;
 
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+        private System.Collections.Generic.IDictionary<string, object>? _additionalProperties;
 
         [System.Text.Json.Serialization.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
@@ -12067,12 +12069,12 @@ namespace EmailPreviewServices
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName)
+        public FileParameter(System.IO.Stream data, string? fileName)
             : this (data, fileName, null)
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName, string contentType)
+        public FileParameter(System.IO.Stream data, string? fileName, string? contentType)
         {
             Data = data;
             FileName = fileName;
@@ -12081,16 +12083,16 @@ namespace EmailPreviewServices
 
         public System.IO.Stream Data { get; private set; }
 
-        public string FileName { get; private set; }
+        public string? FileName { get; private set; }
 
-        public string ContentType { get; private set; }
+        public string? ContentType { get; private set; }
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class FileResponse : System.IDisposable
     {
-        private System.IDisposable _client;
-        private System.IDisposable _response;
+        private System.IDisposable? _client;
+        private System.IDisposable? _response;
 
         public int StatusCode { get; private set; }
 
@@ -12103,7 +12105,7 @@ namespace EmailPreviewServices
             get { return StatusCode == 206; }
         }
 
-        public FileResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.IO.Stream stream, System.IDisposable client, System.IDisposable response)
+        public FileResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.IO.Stream stream, System.IDisposable? client, System.IDisposable? response)
         {
             StatusCode = statusCode;
             Headers = headers;
@@ -12128,11 +12130,11 @@ namespace EmailPreviewServices
     {
         public int StatusCode { get; private set; }
 
-        public string Response { get; private set; }
+        public string? Response { get; private set; }
 
         public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception? innerException)
             : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + ((response == null) ? "(null)" : response.Substring(0, response.Length >= 512 ? 512 : response.Length)), innerException)
         {
             StatusCode = statusCode;
@@ -12151,7 +12153,7 @@ namespace EmailPreviewServices
     {
         public TResult Result { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception? innerException)
             : base(message, statusCode, response, headers, innerException)
         {
             Result = result;
