@@ -1,0 +1,1 @@
+Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via [Ulid](https://github.com/Cysharp/Ulid) package.

@@ -1,0 +1,3580 @@
+openapi: 3.0.1
+info:
+  title: EmailPreviewServices
+  version: v1
+  description: |
+    EmailPreviewServices application provides an API for platform integrations
+    Please refer paid plans description for the API access
+    
+    # General
+    Application exposes REST endpoints using HTTP(s) protocol, data is transfered mostly in `application/json` format
+    and *it is required to specify* it in the `Content-Type` header when body is supplied.
+    Dates returned and should be supplied in the ISO-8601 format
+    API methods are separated by goups:
+      - Authentication - authentication operations, such as login, logout etc.
+      - Preview - email design test execution and management
+      - Analytics - email tracking functionality, track code generation and tracking statistics
+      - Account - account and users operations
+    Please refer method description and model section in method parameters for detailed information about
+    method purpose, address, input content type, parameters description, type and value restrictions
+    
+    # Key concepts
+    ## Authentication:
+    
+    ### Api key
+    API can be acccess with api key authentication. Api key can be retrived via
+    Client Web UI in the Account Settings menu. To authenticate the API, api key should be included in each request
+    in the `X-API-Key` header.
+    
+    ### JWT
+    JWT authentication can be used to access the API. Each request should be followed with an `X-Authorization` header
+    containing `Bearer <access_token>` value, where `access_token` is an access token retrieved from
+    one of the authentication methods. There are 3 authentication management methods:
+      - Login - receives user credentials, starts new session and returns 2 tokens: access and refresh.
+        Access token is used for accessing any method that requires authentication
+        Refresh is used for retrieving new access and refresh tokens
+        Any number of sessions can be used at the same time
+      - Refresh - receives refresh token, refreshes access and refresh tokens
+        within the same session. Previous tokens will be invalidated and could not be used in further requests
+      - Logout - Closes user session and invalidates both access and refresh tokens
+    
+    Tokens have an expiration time, meaning they could not be used after some time elapse.
+    By default, access token has 15 minutes expiration time and refresh token has 2 days expiration time,
+    but it is a subject to change. Basic token refresh flow is following:
+      1. Login, get access and refresh token, store them. Tokens should be saved in a **secure storage**
+      2. Supply access token in `X-Authorization` header with every request that requires authentication
+      3. If request returns 401 Unauthorized HTTP response code, it means that access token
+        is not valid anymore and should be refreshed
+      4. Refresh the token using refresh token retrieved at the 1st stage. Request **should not contain** access token
+        in the `X-Authorization` header since access token is expired and is not valid.
+        Store new access and refresh tokens
+      5. If refresh request returns 401 Unauthorized HTTP response code, it means that refresh token is not valid.
+        To get new refresh token login method should be used
+      6. Login once again to get new tokens if previous could not be reused
+      7. Perform logout to manually close the session and make tokens to be not valid for API access
+    # Preview
+    Preview is an entity representing email design test results on devices that was specified in the execution command
+    Device keys meaning some type of device to take a screenshot, for example Gmail in Chrome browser or Outlook app.
+    Keys are separated in a categories. Available device keys could be retrieved with available devices method
+    To execute design test use appropriate method in preview section supplying device keys which are desired
+    to take a screenshot
+    Each preview has a versions. After preview creation there's one version created, new versions can be added by
+    the new version method
+    Versions are sharable. After version is shared it is accessible for any user or anonymous by share code
+    Email design test can be executed by sending email on a special email address.
+    This address is managed by preview inboxes. Preview inbox can be created, updated or deleted with an API
+    # Analytics
+    Analytics is a tool for collecting and analyzing email views statistics. Email track tag is an analytics unit
+    To collect statistics for email views, tracking code should be generated and paste to the email content body.
+    It is invisible for users and uses CSS collect statistics
+    Different tracking keys can be specified for tracking embedded code, for separate statistics aggregation
+    All email views information then can be aggregated and viewed. CSV export is also available
+    # Account
+    Entities exist within current account are available for all account members, any preview or email tag created
+    are available for all users in account
+    By default account contains only one user which is the account master, but more users can be added to the account
+    Account master can manage account, account's billing and tariff plan information.
+    Master user could not be changed
+paths:
+  /spamchecks/{spamCheckId}:
+    get:
+      tags:
+        - Spam checks
+      summary: Get spam check results
+      description: Retrieves detailed spam check results and analysis for a specific email by its ID
+      operationId: getSpamCheck
+      parameters:
+        - name: spamCheckId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpamCheckData'
+    put:
+      tags:
+        - Spam checks
+      summary: Update spam check settings
+      description: Modify spam check configuration and parameters for a specific check ID
+      operationId: updateSpamCheck
+      parameters:
+        - name: spamCheckId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpamCheckUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpamCheckData'
+  /previews/{previewId}:
+    get:
+      tags:
+        - Previews
+      summary: Get email preview details
+      description: Retrieves complete information about an email preview including all screenshots and test results
+      operationId: getPreview
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+    put:
+      tags:
+        - Previews
+      summary: Update preview settings
+      description: Modify preview configuration including device settings, screenshot preferences, and test parameters
+      operationId: updatePreview
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+    delete:
+      tags:
+        - Previews
+      summary: Delete preview
+      description: Permanently removes an email preview and all associated screenshots and test results
+      operationId: deletePreview
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /previews/{previewId}/versions/{versionId}:
+    get:
+      tags:
+        - Previews
+      summary: Get preview version
+      description: Retrieves specific version of an email preview with its associated screenshots and test results
+      operationId: getPreviewVersion
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewVersionData'
+    put:
+      tags:
+        - Previews
+      summary: Update preview version
+      description: Modify settings and metadata for a specific version of an email preview
+      operationId: updatePreviewVersion
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewVersionUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewVersionData'
+  /previews/inboxes/{previewInboxId}:
+    get:
+      tags:
+        - Previews
+      summary: Get preview inbox
+      description: Retrieves preview inbox details including all test emails and their delivery status
+      operationId: getPreviewInbox
+      parameters:
+        - name: previewInboxId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewInboxData'
+    put:
+      tags:
+        - Previews
+      summary: Update preview inbox
+      description: Modify preview inbox settings including email delivery preferences and test parameters
+      operationId: updatePreviewInbox
+      parameters:
+        - name: previewInboxId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboxUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewInboxData'
+    delete:
+      tags:
+        - Previews
+      summary: Delete preview inbox
+      description: Permanently removes a preview inbox and all associated test emails
+      operationId: deletePreviewInbox
+      parameters:
+        - name: previewInboxId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /editor/emails/{editorEmailId}:
+    get:
+      tags:
+        - Editor
+      summary: Get email template
+      description: Retrieves email template content and metadata for editing
+      operationId: getEmail
+      parameters:
+        - name: editorEmailId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailData'
+    put:
+      tags:
+        - Editor
+      summary: Update email template
+      description: Modify email template content, styling, and metadata
+      operationId: updateEmail
+      parameters:
+        - name: editorEmailId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailData'
+    delete:
+      tags:
+        - Editor
+      summary: Delete email template
+      description: Permanently removes an email template and its associated content
+      operationId: deleteEmail
+      parameters:
+        - name: editorEmailId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /analytics/{analyticsTagId}:
+    get:
+      tags:
+        - Analytics
+      summary: Get analytics tag statistics
+      description: Retrieves detailed statistics and metrics for a specific analytics tag
+      operationId: getTagStatistics
+      parameters:
+        - name: analyticsTagId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filterKeys
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTagStatistics'
+    put:
+      tags:
+        - Analytics
+      summary: Update analytics tag
+      description: Modify analytics tag configuration and tracking parameters
+      operationId: updateTag
+      parameters:
+        - name: analyticsTagId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsTagUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTagData'
+    delete:
+      tags:
+        - Analytics
+      summary: Delete analytics tag
+      description: Permanently removes an analytics tag and its associated tracking data
+      operationId: deleteTag
+      parameters:
+        - name: analyticsTagId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /account:
+    get:
+      tags:
+        - Accounts
+      summary: Get account details
+      description: Retrieves complete account information including profile, settings, and subscription details
+      operationId: getAccount
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountData'
+    put:
+      tags:
+        - Accounts
+      summary: Update account settings
+      description: Modify account configuration, profile information, and preferences
+      operationId: updateAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountData'
+    delete:
+      tags:
+        - Accounts
+      summary: Delete account
+      description: Permanently deletes the user's account and all associated data. This action requires verification.
+      operationId: deleteAccount
+      parameters:
+        - name: verify
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /account/users/{userId}:
+    get:
+      tags:
+        - Accounts
+      summary: Get user details
+      description: Retrieves complete information about a specific user in the account
+      operationId: getUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+    put:
+      tags:
+        - Accounts
+      summary: Update user settings
+      description: Modify user profile, permissions, and account access settings
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUserUpdate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+    delete:
+      tags:
+        - Accounts
+      summary: Delete user
+      description: Permanently removes a user from the account
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  /account/users/{userId}/upload-image:
+    put:
+      tags:
+        - Accounts
+      summary: Upload user profile image
+      description: Upload and update the profile image for a specific user account
+      operationId: uploadImageAccountUser
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+  /account/users/{userId}/not-new:
+    put:
+      tags:
+        - Accounts
+      summary: Mark user as not new
+      description: Updates the user's status from new to regular user, typically used after onboarding
+      operationId: makeAccountUserNotNew
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+  /account/updateCustomerSource:
+    put:
+      tags:
+        - Accounts
+      summary: Update customer payment source
+      description: Updates the payment source information for the customer's account
+      operationId: updateSource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerParam'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /spamchecks:
+    get:
+      tags:
+        - Spam checks
+      summary: List all spam checks
+      description: Retrieves a list of all spam checks performed for the account
+      operationId: getSpamChecks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpamCheckDataLight'
+    post:
+      tags:
+        - Spam checks
+      summary: Create new spam check
+      description: Initiates a new spam check analysis for an email
+      operationId: createSpamCheck
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpamCheckCreate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpamCheckData'
+  /previews:
+    get:
+      deprecated: true
+      tags:
+        - Previews
+      summary: List all previews (deprecated)
+      description: Retrieves a list of all email previews (use /v2/previews for paginated results)
+      operationId: getPreviewList
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PreviewDataLight'
+    post:
+      tags:
+        - Previews
+      summary: Create new preview
+      description: Creates and executes a new email preview test with specified settings
+      operationId: executePreview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Preview'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+  /v2/previews:
+    get:
+      tags:
+        - Previews
+      operationId: getPreviewListV2
+      summary: Get a paginated list of previews.
+      description: |
+        Retrieves a list of email previews.
+        Supports pagination via `page` and `perPage` query parameters, sorting via `sortBy` and `sortDirection`, and filtering via `name` and `subject`.
+        The response includes:
+        - `data`: array of preview items  
+        - `meta`:
+          - `page`: current page number  
+          - `perPage`: number of items per page  
+          - `totalPages`: total number of pages
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: |
+            Page number for pagination (default: 1).
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+
+        - name: perPage
+          in: query
+          required: false
+          description: |
+            Number of items per page (default: 25).
+          schema:
+            type: integer
+            minimum: 1
+            default: 25
+
+        - name: sortBy
+          in: query
+          required: false
+          description: |
+            Field to sort by.  
+            Allowed values: `id`, `name`, `subject`, `createdAt`, `lastModifiedAt`.
+          schema:
+            type: string
+            enum:
+              - id
+              - name
+              - subject
+              - createdAt
+              - lastModifiedAt
+
+        - name: sortDirection
+          in: query
+          required: false
+          description: |
+            Sort direction.  
+            Allowed values: `asc`, `desc`.  
+            Default: `asc`.
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+
+        - name: name
+          in: query
+          required: false
+          description: Filter by name (case-insensitive, substring match).
+          schema:
+            type: string
+
+        - name: subject
+          in: query
+          required: false
+          description: Filter by subject (case-insensitive, substring match).
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: OK â€” a paginated list of previews.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPreviewDataLightResponse'
+  /previews/{previewId}/versions:
+    get:
+      tags:
+        - Previews
+      summary: List preview versions
+      description: Retrieves all versions of a specific email preview
+      operationId: getPreviewVersionList
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailPreviewVersionSummaryData'
+    post:
+      tags:
+        - Previews
+      summary: Create new preview version
+      description: Creates a new version of an existing email preview for testing changes
+      operationId: newPreviewVersion
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewVersionRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+  /previews/{previewId}/versions/{versionId}/share:
+    post:
+      tags:
+        - Previews
+      summary: Share preview version
+      description: Generates a shareable link for a specific version of an email preview
+      operationId: sharePreview
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewVersionData'
+    delete:
+      tags:
+        - Previews
+      summary: Stop preview sharing
+      description: Revokes access to a previously shared preview version
+      operationId: stopPreviewSharing
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewVersionData'
+  /previews/{previewId}/versions/{versionId}/restore:
+    post:
+      tags:
+        - Previews
+      summary: Restore preview version
+      description: Restores a specific version of an email preview as the current version
+      operationId: restorePreviewVersion
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+  /previews/{previewId}/retry:
+    post:
+      tags:
+        - Previews
+      summary: Retry failed preview
+      description: Retries a failed preview test with specified retry parameters
+      operationId: retryPreview
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Retry'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewData'
+  /previews/inboxes:
+    get:
+      tags:
+        - Previews
+      summary: List preview inboxes
+      description: Retrieves a list of all preview inboxes available for testing
+      operationId: getPreviewInboxes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailPreviewInboxData'
+    post:
+      tags:
+        - Previews
+      summary: Create preview inbox
+      description: Creates a new preview inbox for testing email deliverability
+      operationId: createPreviewInbox
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboxCreate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewInboxData'
+  /editor/emails:
+    get:
+      tags:
+        - Editor
+      summary: List email templates
+      description: Retrieves a list of all email templates in the editor
+      operationId: getEmails
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailDataLight'
+    post:
+      tags:
+        - Editor
+      summary: Create email template
+      description: Creates a new email template in the editor
+      operationId: createEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailCreate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailData'
+  /editor/emails/{editorEmailId}/generate:
+    post:
+      tags:
+        - Editor
+      summary: Generate email HTML
+      description: Generates the final HTML code for an email template
+      operationId: generateEmail
+      parameters:
+        - name: editorEmailId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailHtmlData'
+  /auth/token:
+    post:
+      tags:
+        - Authentication
+      summary: Refresh authentication token
+      description: Generates a new access token using a valid refresh token
+      operationId: refreshToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshToken'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Logout user
+      description: Invalidates the current session and authentication tokens
+      operationId: logout
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+  /auth/login:
+    post:
+      tags:
+        - Authentication
+      summary: Login user
+      description: Authenticates user credentials and creates a new session with access tokens
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+  /analytics:
+    get:
+      tags:
+        - Analytics
+      summary: List analytics tags
+      description: Retrieves all analytics tags and their associated tracking data
+      operationId: getTags
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailTagData'
+    post:
+      tags:
+        - Analytics
+      summary: Create analytics tag
+      description: Creates a new analytics tag for tracking email engagement
+      operationId: createTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticsTagCreate'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTagData'
+  /analytics/{analyticsTagId}/trackcode:
+    post:
+      tags:
+        - Analytics
+      summary: Generate tracking code
+      description: Generates HTML tracking code for embedding in emails
+      operationId: getTrackingCode
+      parameters:
+        - name: analyticsTagId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/html:
+              schema:
+                type: string
+  /analytics/{analyticsTagId}/export:
+    post:
+      tags:
+        - Analytics
+      operationId: exportCsv
+      summary: Export analytics data as CSV
+      description: Exports analytics data, filtered by specified keys, as a CSV file.
+      parameters:
+        - name: analyticsTagId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: keys
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+  /account/users:
+    get:
+      tags:
+        - Accounts
+      summary: List account users
+      description: Retrieves a list of all users associated with the current account
+      operationId: getAccountUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDataPublic'
+    post:
+      tags:
+        - Accounts
+      summary: Create a new user
+      description: Registers a new user and associates them with the current account
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+  /account/users/{userId}/changepassword:
+    post:
+      tags:
+        - Accounts
+      summary: Change user password
+      description: Changes the password for a user. Requires the current password and new password. The user must be authenticated to use this endpoint.
+      operationId: changePassword
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+  /account/users/resetpassword:
+    post:
+      tags:
+        - Accounts
+      summary: Reset user password
+      description: Resets the password for a user, typically requiring a reset token obtained via a password reset request
+      operationId: resetPassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /account/users/resetpassword/request:
+    post:
+      tags:
+        - Accounts
+      operationId: sendResetPassword
+      summary: Request password reset
+      description: Initiates the password reset process for a user by sending a reset link or code to their registered email address.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /account/users/current/legacy-api-key:
+    post:
+      tags:
+        - Accounts
+      summary: Create legacy API key for current user
+      description: Generates a new legacy API key for the currently authenticated user
+      operationId: createAccountLegacyApiKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLegacyApiKey'
+    delete:
+      tags:
+        - Accounts
+      summary: Delete legacy API key for current user
+      description: Deletes the legacy API key for the currently authenticated user
+      operationId: deleteAccountLegacyApiKey
+      responses:
+        '200':
+          description: OK
+  /account/users/current/api-key:
+    post:
+      tags:
+        - Accounts
+      summary: Create API key for current user
+      description: Generates a new API key for the currently authenticated user.
+      operationId: createAccountApiKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserApiKey'
+    delete:
+      tags:
+        - Accounts
+      summary: Delete API key for current user
+      description: Deletes an API key for the currently authenticated user.
+      operationId: deleteAccountApiKey
+      responses:
+        '200':
+          description: OK
+  /account/users/activate:
+    post:
+      tags:
+        - Accounts
+      summary: Activate user account
+      description: Activates a user account, typically after registration or email verification, using an activation token.
+      operationId: activateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activation'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /account/users/activate/request:
+    post:
+      tags:
+        - Accounts
+      operationId: sendActivation
+      summary: Request account activation
+      description: Sends an activation link or code to the user's registered email address to verify and activate their account.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivationRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+  /account/tariff:
+    get:
+      tags:
+        - Accounts
+      summary: Get account tariff plan
+      description: Retrieves details of the current tariff plan and subscription for the account.
+      operationId: getAccountTariff
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffSubscriptionData'
+    post:
+      tags:
+        - Accounts
+      summary: Subscribe to a tariff plan
+      description: Subscribes the account to a new tariff plan or changes the existing one.
+      operationId: subscribeTariffPlan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TariffPlanSubscription'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffSubscriptionData'
+  /account/tariff/cancel:
+    post:
+      tags:
+        - Accounts
+      operationId: cancelTariffPlanSubscription
+      summary: Cancel tariff plan subscription immediately
+      description: Cancels the current tariff plan subscription for the account, with changes taking effect immediately.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffSubscriptionData'
+  /account/tariff/cancel/period-end:
+    post:
+      tags:
+        - Accounts
+      operationId: cancelTariffPlanSubscriptionAtPeriodEnd
+      summary: Cancel tariff plan subscription at period end
+      description: Schedules the cancellation of the current tariff plan subscription at the end of the current billing period.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TariffSubscriptionData'
+  /account/register:
+    post:
+      tags:
+        - Accounts
+      operationId: register
+      summary: Register new account
+      description: Creates a new account for a user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountRegistration'
+  /account/createPaymentIntent:
+    post:
+      tags:
+        - Accounts
+      operationId: createPaymentIntent
+      summary: Create payment intent
+      description: Creates a payment intent for processing payments, typically used with Stripe or similar payment gateways.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientSecret'
+  /tariff/available:
+    get:
+      tags:
+        - Tariffs
+      operationId: getTariffPlansAvailable
+      summary: Get available tariff plans
+      description: Retrieves a list of all available tariff plans that users can subscribe to.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TariffPlan'
+  /statistics/preview-execution:
+    get:
+      tags:
+        - Statistics
+      operationId: getExecutionStatistics
+      summary: Get preview execution statistics
+      description: Retrieves statistics about email preview generation, including aggregation intervals and top devices.
+      parameters:
+        - name: aggInterval
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: topDevices
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantPreviewExecutionStat'
+  /statistics/api-usage:
+    get:
+      tags:
+        - Statistics
+      operationId: getApiUsageStatistics
+      summary: Get API usage statistics
+      description: Retrieves statistics about API usage, including aggregation intervals and date ranges.
+      parameters:
+        - name: aggInterval
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApiUsageStat'
+  /spamchecks/{spamCheckId}/seed:
+    get:
+      tags:
+        - Spam checks
+      operationId: getSpamCheckSeed
+      summary: Get spam check seed data
+      description: Retrieves the seed data (original email content) for a specific spam check.
+      parameters:
+        - name: spamCheckId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpamCheckSeedData'
+  /spamchecks/{spamCheckId}/inboxes/{spamCheckInboxId}/headers:
+    get:
+      tags:
+        - Spam checks
+      operationId: getSpamCheckHeaders
+      summary: Get spam check headers
+      description: Retrieves the email headers from a specific inbox for a given spam check.
+      parameters:
+        - name: spamCheckId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: spamCheckInboxId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpamCheckHeaderData'
+  /spamchecks/{spamCheckId}/email-info:
+    get:
+      tags:
+        - Spam checks
+      operationId: getSpamCheckEmailInfo
+      summary: Get spam check email info
+      description: Retrieves information about emails received for a specific spam check, such as sender, subject, and received time.
+      parameters:
+        - name: spamCheckId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpamCheckEmailInfoData'
+  /spamchecks/providers:
+    get:
+      tags:
+        - Spam checks
+      operationId: getSpamCheckProviders
+      summary: Get spam check providers
+      description: Retrieves a list of available spam check provider groups.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SpamCheckProviderGroup'
+  /previews/{previewId}/devices:
+    get:
+      tags:
+        - Previews
+      operationId: getAllDevicesPreviews
+      summary: Get all device previews for a preview ID
+      description: Retrieves all device-specific previews associated with a given preview ID.
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DevicePreviewData'
+  /previews/{previewId}/devices/{deviceKey}:
+    get:
+      tags:
+        - Previews
+      operationId: getDevicePreview
+      summary: Get a specific device preview
+      description: Retrieves the preview for a specific device (e.g., iPhone, Outlook) for a given preview ID.
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: deviceKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DevicePreviewData'
+  /previews/zip/{previewId}:
+    get:
+      tags:
+        - Previews
+      operationId: getPreviewZip
+      summary: Get preview as a ZIP archive
+      description: Downloads all renderings for a specific preview ID as a ZIP archive.
+      parameters:
+        - name: previewId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+  /previews/shared:
+    get:
+      tags:
+        - Previews
+      operationId: getSharedPreview
+      summary: Get shared preview
+      description: Retrieves a shared email preview using a share code.
+      parameters:
+        - name: shareCode
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailPreviewSharedData'
+  /previews/devices:
+    get:
+      tags:
+        - Previews
+      operationId: getDeviceList
+      summary: Get list of available devices
+      description: Retrieves a list of all available devices for email previews.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceKeyData'
+  /files/{shareCode}:
+    get:
+      tags:
+        - Files
+      operationId: get
+      summary: Get shared file
+      description: Retrieves a file using a share code. Can be used for viewing or downloading.
+      parameters:
+        - name: shareCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: preview
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: download
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
+  /auth/login/social/{providerId}:
+    get:
+      tags:
+        - Authentication
+      operationId: socialLogin
+      summary: Login via social provider
+      description: Initiates the login process using a third-party social provider (e.g., Google, Facebook).
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: providerRedirectTo
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+  /account/users/current:
+    get:
+      tags:
+        - Accounts
+      operationId: getCurrentUser
+      summary: Get current user details
+      description: Retrieves the profile information for the currently authenticated user.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataPublic'
+  /account/register/social/{providerId}:
+    get:
+      tags:
+        - Accounts
+      operationId: registerSocial
+      summary: Register via social provider
+      description: Initiates the registration process using a third-party social provider and associates it with a tariff plan.
+      parameters:
+        - name: providerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: tariffPlanId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: providerRedirectTo
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: paymentToken
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountRegistrationAuthenticated'
+  /account/getInvoices:
+    get:
+      tags:
+        - Accounts
+      operationId: getAccountInvoices
+      summary: Get account invoices
+      description: Retrieves a list of invoices for the current account, with an optional limit on the number of results.
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerInvoices'
+  /account/featureparams:
+    get:
+      tags:
+        - Accounts
+      operationId: getFeatureParams
+      summary: Get account feature parameters
+      description: Retrieves feature parameters and settings for the current account.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureParameters'
+components:
+  schemas:
+    SpamCheckUpdate:
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    DataBarracudaBRTS:
+      type: object
+      properties:
+        domains:
+          type: array
+          items:
+            type: string
+    DataBarracudaEvidence:
+      type: object
+      properties:
+        domains:
+          type: array
+          items:
+            type: string
+    DataBarracudaStatus:
+      type: object
+      properties:
+        status:
+          type: string
+    DataBookACall:
+      type: object
+      properties:
+        value:
+          type: string
+    DataCount:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    DataDmarcDomain:
+      type: object
+      properties:
+        domain:
+          type: string
+    DataDmarcRecord:
+      type: object
+      properties:
+        domain:
+          type: string
+        error:
+          type: string
+        record:
+          type: string
+    DataDmarcRecordNotInGlockapps:
+      type: object
+      properties:
+        domain:
+          type: string
+        record:
+          type: string
+    DataEmails:
+      type: object
+      properties:
+        emails:
+          type: array
+          items:
+            type: string
+    DataHasBrokenLinks:
+      type: object
+      properties:
+        links:
+          type: object
+          additionalProperties:
+            type: string
+    DataImageTooLarge:
+      type: object
+      properties:
+        size:
+          type: string
+        url:
+          type: string
+    DataMS:
+      type: object
+      properties:
+        email:
+          type: string
+        ip:
+          type: string
+        value:
+          type: integer
+          format: int32
+    DataResponseTimeTooLong:
+      type: object
+      properties:
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkData'
+    DataSenderScore:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int32
+    DataSize:
+      type: object
+      properties:
+        size:
+          type: string
+    DataSpfRecord:
+      type: object
+      properties:
+        domain:
+          type: string
+        error:
+          type: string
+        record:
+          type: string
+    DataSpfRecordMissing:
+      type: object
+      properties:
+        domain:
+          type: string
+    Flag:
+      type: object
+      properties:
+        DMARC_RECORD_POLICY_NONE:
+          $ref: '#/components/schemas/FlagDmarcRecordPolicyNone'
+        DMARC_RECORD_NOT_IN_GLOCKAPPS:
+          $ref: '#/components/schemas/FlagDmarcRecordNotingLockApps'
+        DMARC_RECORD_MISSING:
+          $ref: '#/components/schemas/FlagDmarcRecordPolicyNone'
+        DMARC_RECORD_ERROR:
+          $ref: '#/components/schemas/FlagDmarcRecordError'
+        GAPPS_AOL_INSPAM:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        GAPPS_BARRACUDA_BRTS:
+          $ref: '#/components/schemas/FlagGappsBarracudaBrts'
+        GAPPS_BARRACUDA_EVIDENCE:
+          $ref: '#/components/schemas/FlagGappsBarracudaEvidence'
+        GAPPS_BARRACUDA_STATUS:
+          $ref: '#/components/schemas/FlagGappsBarracudaStatus'
+        GAPPS_BOOK_A_CALL:
+          $ref: '#/components/schemas/FlagGappsBookACall'
+        GAPPS_EMAIL_SIZE_TOO_LARGE:
+          $ref: '#/components/schemas/FlagGappsEmailSizeTooLarge'
+        GAPPS_GMAIL_IN_PROMOTIONS:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        GAPPS_GMAIL_INSPAM:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        GAPPS_HAS_BROKEN_LINKS:
+          $ref: '#/components/schemas/FlagGappsHasBrokenLinks'
+        GAPPS_HOTMAIL_INSPAM:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        GAPPS_IMAGE_TOO_LARGE_V2:
+          $ref: '#/components/schemas/FlagGappsImageTooLargeV2'
+        GAPPS_EXCHANGE_ORG_SCL:
+          $ref: '#/components/schemas/FlagGappsExchangeOrgscl'
+        GAPPS_EXCHANGE_ORG_PCL:
+          $ref: '#/components/schemas/FlagGappsExchangeOrgscl'
+        GAPPS_FOREFRONT_SCL:
+          $ref: '#/components/schemas/FlagGappsExchangeOrgscl'
+        GAPPS_ANTISPAM_BCL:
+          $ref: '#/components/schemas/FlagGappsExchangeOrgscl'
+        GAPPS_OUTLOOK_INSPAM:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        GAPPS_PLAIN_TEXT_TOO_SMALL:
+          $ref: '#/components/schemas/FlagGappsEmailSizeTooLarge'
+        GAPPS_SENDER_SCORE:
+          $ref: '#/components/schemas/FlagGappsSenderScore'
+        GAPPS_TOO_MANY_IMAGES:
+          $ref: '#/components/schemas/FlagGappsTooManyImages'
+        GAPPS_TOO_MANY_LINKS:
+          $ref: '#/components/schemas/FlagGappsTooManyImages'
+        GAPPS_TOTAL_IMAGES_SIZE_TOO_LARGE:
+          $ref: '#/components/schemas/FlagGappsEmailSizeTooLarge'
+        GAPPS_YAHOO_INSPAM:
+          $ref: '#/components/schemas/FlagGappsAolInspam'
+        RESPONSE_TIME_TOO_LONG:
+          $ref: '#/components/schemas/FlagResponseTimeTooLong'
+        SPF_RECORD_ERROR:
+          $ref: '#/components/schemas/FlagSpfRecordError'
+        SPF_RECORD_MISSING:
+          $ref: '#/components/schemas/FlagSpfRecordMissing'
+    FlagDmarcRecordError:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataDmarcRecord'
+        type:
+          type: string
+    FlagDmarcRecordNotingLockApps:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataDmarcRecordNotInGlockapps'
+        type:
+          type: string
+    FlagDmarcRecordPolicyNone:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataDmarcDomain'
+        type:
+          type: string
+    FlagGappsAolInspam:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataEmails'
+        type:
+          type: string
+    FlagGappsBarracudaBrts:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBarracudaBRTS'
+        type:
+          type: string
+    FlagGappsBarracudaEvidence:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBarracudaEvidence'
+        type:
+          type: string
+    FlagGappsBarracudaStatus:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBarracudaStatus'
+        type:
+          type: string
+    FlagGappsBookACall:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataBookACall'
+        type:
+          type: string
+    FlagGappsEmailSizeTooLarge:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSize'
+        type:
+          type: string
+    FlagGappsExchangeOrgscl:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataMS'
+        type:
+          type: string
+    FlagGappsHasBrokenLinks:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataHasBrokenLinks'
+        type:
+          type: string
+    FlagGappsImageTooLargeV2:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataImageTooLarge'
+        type:
+          type: string
+    FlagGappsSenderScore:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSenderScore'
+        type:
+          type: string
+    FlagGappsTooManyImages:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataCount'
+        type:
+          type: string
+    FlagResponseTimeTooLong:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataResponseTimeTooLong'
+        type:
+          type: string
+    FlagSpfRecordError:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSpfRecord'
+        type:
+          type: string
+    FlagSpfRecordMissing:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/DataSpfRecordMissing'
+        type:
+          type: string
+    LinkData:
+      type: object
+      properties:
+        errorLevel:
+          type: string
+        link:
+          type: string
+        responseTimeMs:
+          type: string
+    SpamCheckData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+        complete:
+          type: boolean
+        dkim:
+          type: string
+        spf:
+          type: string
+        sender:
+          $ref: '#/components/schemas/SpamCheckDataSender'
+        inboxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckInboxData'
+        spamFilters:
+          $ref: '#/components/schemas/SpamCheckDataSpamFilters'
+        dnsbl:
+          $ref: '#/components/schemas/SpamCheckDataDnsbl'
+        summary:
+          $ref: '#/components/schemas/SpamCheckDataSummary'
+    SpamCheckDataDnsbl:
+      type: object
+      properties:
+        complete:
+          type: boolean
+        servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckDataDnsblServers'
+    SpamCheckDataDnsblServers:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+        listedCount:
+          type: integer
+          format: int32
+        rdns:
+          type: string
+        senderScore:
+          type: integer
+          format: int32
+    SpamCheckDataSender:
+      type: object
+      properties:
+        subject:
+          type: string
+        email:
+          type: string
+        ip:
+          type: string
+        score:
+          type: string
+        helo:
+          type: string
+        returnPath:
+          type: string
+        reverseHelo:
+          type: string
+        reverseIp:
+          type: string
+    SpamCheckDataSpamFilters:
+      type: object
+      properties:
+        spamAssassin:
+          $ref: '#/components/schemas/SpamCheckDataSpamFiltersSpamAssassin'
+        googleApps:
+          $ref: '#/components/schemas/SpamCheckDataSpamFiltersGoogleApps'
+        barracuda:
+          $ref: '#/components/schemas/SpamCheckDataSpamFiltersBarracuda'
+        hwBarracuda:
+          $ref: '#/components/schemas/SpamCheckDataSpamFiltersHwBarracuda'
+    SpamCheckDataSpamFiltersBarracuda:
+      type: object
+      properties:
+        active:
+          type: boolean
+        score:
+          type: number
+          format: double
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckDataSpamFiltersSpamAssassinHeaders'
+        reason:
+          type: string
+        reasonExtra:
+          type: string
+    SpamCheckDataSpamFiltersGoogleApps:
+      type: object
+      properties:
+        active:
+          type: boolean
+        completed:
+          type: boolean
+        spam:
+          type: boolean
+        phishy:
+          type: boolean
+    SpamCheckDataSpamFiltersHwBarracuda:
+      type: object
+      properties:
+        score:
+          type: number
+          format: double
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckDataSpamFiltersSpamAssassinHeaders'
+        status:
+          type: string
+        brtsUrls:
+          type: array
+          items:
+            type: string
+        evidence:
+          type: array
+          items:
+            type: string
+    SpamCheckDataSpamFiltersSpamAssassin:
+      type: object
+      properties:
+        active:
+          type: boolean
+        completed:
+          type: boolean
+        score:
+          type: number
+          format: double
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckDataSpamFiltersSpamAssassinHeaders'
+    SpamCheckDataSpamFiltersSpamAssassinHeaders:
+      type: object
+      properties:
+        score:
+          type: number
+          format: double
+        tag:
+          type: string
+        description:
+          type: string
+    SpamCheckDataSummary:
+      type: object
+      properties:
+        inbox:
+          type: integer
+          format: int32
+        inboxAndOtherRates:
+          type: number
+          format: double
+        inboxRate:
+          type: number
+          format: double
+        notDelivered:
+          type: integer
+          format: int32
+        notDeliveredRate:
+          type: number
+          format: double
+        other:
+          type: integer
+          format: int32
+        otherRate:
+          type: number
+          format: double
+        spam:
+          type: integer
+          format: int32
+        spamRate:
+          type: number
+          format: double
+    SpamCheckInboxData:
+      type: object
+      properties:
+        bimi:
+          type: string
+        delay:
+          type: string
+        deliveredIn:
+          type: integer
+          format: int64
+        dkim:
+          type: string
+        dmarc:
+          type: string
+        email:
+          type: string
+        finished:
+          type: boolean
+        iType:
+          type: string
+        ip:
+          type: string
+        providerGroupId:
+          type: string
+        received:
+          type: string
+          format: date-time
+        seedAccountGroupId:
+          type: string
+        seedAccountId:
+          type: string
+        seedAccountRegionId:
+          type: string
+        seedName:
+          type: string
+        spf:
+          type: string
+        visible:
+          type: boolean
+        gappsFlags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flag'
+    UserValue:
+      type: object
+      properties:
+        accountId:
+          type: string
+        userId:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+    PreviewUpdate:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    DevicePreviewData:
+      type: object
+      properties:
+        deviceKey:
+          type: string
+        status:
+          type: string
+          enum:
+            - PROCESSING
+            - SUCCESSFUL
+            - FAILED
+        preview:
+          $ref: '#/components/schemas/DevicePreviewDataPreview'
+    DevicePreviewDataPreview:
+      type: object
+      properties:
+        original:
+          type: string
+        thumbnail:
+          type: string
+    EmailPreviewData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        subject:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+        body:
+          type: string
+        previews:
+          type: array
+          items:
+            $ref: '#/components/schemas/DevicePreviewData'
+    PreviewVersionUpdate:
+      type: object
+      properties:
+        versionTag:
+          type: string
+    EmailPreviewVersionData:
+      type: object
+      properties:
+        versionId:
+          type: string
+        versionCreatedAt:
+          type: string
+          format: date-time
+        versionCreatedBy:
+          $ref: '#/components/schemas/UserValue'
+        versionTag:
+          type: string
+        current:
+          type: boolean
+        sharing:
+          $ref: '#/components/schemas/EmailPreviewVersionSummaryDataSharing'
+        subject:
+          type: string
+        body:
+          type: string
+        previews:
+          type: array
+          items:
+            $ref: '#/components/schemas/DevicePreviewData'
+    EmailPreviewVersionSummaryDataSharing:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        shareCode:
+          type: string
+    InboxUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+        expiresAt:
+          type: string
+          format: date-time
+    EmailPreviewInboxData:
+      type: object
+      properties:
+        id:
+          type: string
+        emailAddress:
+          type: string
+        name:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+        deleteOnReceive:
+          type: boolean
+        expiresAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+    EmailBodyData:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailContentData'
+    EmailContentData:
+      type: object
+      properties:
+        key:
+          type: string
+        settings:
+          type: object
+          additionalProperties:
+            type: string
+        data:
+          type: string
+    EmailUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        body:
+          $ref: '#/components/schemas/EmailBodyData'
+    EmailData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+        body:
+          $ref: '#/components/schemas/EmailBodyData'
+    AnalyticsTagUpdate:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    EmailTagData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+    AccountUpdate:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    AccountData:
+      type: object
+      properties:
+        id:
+          type: string
+        tenantId:
+          type: string
+        masterUserId:
+          type: string
+        name:
+          type: string
+        billingCustomerId:
+          type: string
+    AccountUserUpdate:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/Username'
+    Username:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+    UserDataPublic:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        identityId:
+          type: string
+        name:
+          $ref: '#/components/schemas/Username'
+        active:
+          type: boolean
+        isNew:
+          type: boolean
+        image:
+          $ref: '#/components/schemas/UserImagePreviewData'
+    UserImagePreviewData:
+      type: object
+      properties:
+        original:
+          type: string
+        medium:
+          type: string
+        small:
+          type: string
+    CustomerParam:
+      type: object
+      properties:
+        paymentToken:
+          type: string
+    SpamCheckCreate:
+      required:
+        - barracuda
+        - googleSpamFilter
+        - name
+        - spamAssassin
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        spamAssassin:
+          type: boolean
+        googleSpamFilter:
+          type: boolean
+        barracuda:
+          type: boolean
+        providers:
+          type: array
+          items:
+            type: string
+    Preview:
+      type: object
+      properties:
+        name:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+    PreviewVersionRequest:
+      type: object
+      properties:
+        subject:
+          type: string
+        body:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+    Retry:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: string
+    InboxCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        devices:
+          type: array
+          items:
+            type: string
+        deleteOnReceive:
+          type: boolean
+        expiresAt:
+          type: string
+          format: date-time
+    EmailCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        body:
+          $ref: '#/components/schemas/EmailBodyData'
+    EmailHtmlData:
+      type: object
+      properties:
+        html:
+          type: string
+    RefreshToken:
+      required:
+        - refreshToken
+      type: object
+      properties:
+        refreshToken:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    AuthToken:
+      type: object
+      properties:
+        accessToken:
+          $ref: '#/components/schemas/AuthTokenAccessToken'
+        refreshToken:
+          $ref: '#/components/schemas/AuthTokenRefreshToken'
+    AuthTokenAccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+    AuthTokenRefreshToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    AnalyticsTagCreate:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    AccountUsersName:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+    UserRegister:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          $ref: '#/components/schemas/AccountUsersName'
+        password:
+          type: string
+    PasswordChange:
+      required:
+        - newPassword
+      type: object
+      properties:
+        newPassword:
+          maxLength: 2147483647
+          minLength: 8
+          type: string
+    ResetPassword:
+      type: object
+      properties:
+        resetPasswordCode:
+          type: string
+        newPassword:
+          type: string
+    ResetPasswordRequest:
+      required:
+        - callbackUrl
+        - email
+      type: object
+      properties:
+        callbackUrl:
+          pattern: https?://.*
+          type: string
+        email:
+          type: string
+    UserLegacyApiKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+    UserApiKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+    Activation:
+      required:
+        - activationCode
+      type: object
+      properties:
+        activationCode:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+    ActivationRequest:
+      required:
+        - email
+      type: object
+      properties:
+        callbackUrl:
+          pattern: https?://.*
+          type: string
+        email:
+          type: string
+    TariffPlanSubscription:
+      required:
+        - tariffId
+      type: object
+      properties:
+        tariffId:
+          type: string
+        sendInvoice:
+          type: boolean
+        paymentToken:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+        endTrial:
+          type: boolean
+    PriceData:
+      required:
+        - amount
+        - currencyCode
+      type: object
+      properties:
+        amount:
+          minimum: 0.01
+          exclusiveMinimum: false
+          type: number
+        currencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+    TariffPeriod:
+      required:
+        - count
+        - interval
+      type: object
+      properties:
+        interval:
+          type: string
+          enum:
+            - DAY
+            - WEEK
+            - MONTH
+            - YEAR
+        count:
+          type: integer
+          format: int64
+    TariffSubscriptionData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: '#/components/schemas/PriceData'
+        period:
+          $ref: '#/components/schemas/TariffPeriod'
+        trialStart:
+          type: string
+          format: date-time
+        trialEnd:
+          type: string
+          format: date-time
+        subscribedAt:
+          type: string
+          format: date-time
+        endedAt:
+          type: string
+          format: date-time
+        currentPeriodStartedAt:
+          type: string
+          format: date-time
+        currentPeriodEndsAt:
+          type: string
+          format: date-time
+        invoiceDaysDue:
+          type: integer
+          format: int64
+        sendInvoice:
+          type: boolean
+        cancelAtPeriodEnd:
+          type: boolean
+        billingPlanId:
+          type: string
+        status:
+          type: string
+          enum:
+            - TRIALING
+            - ACTIVE
+            - PAST_DUE
+            - CANCELED
+            - UNPAID
+    Register:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          $ref: '#/components/schemas/AccountUsersName'
+        password:
+          type: string
+        tariffPlanId:
+          type: string
+        paymentToken:
+          type: string
+    AccountRegistration:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountData'
+        masterUser:
+          $ref: '#/components/schemas/UserData'
+    UserData:
+      type: object
+      properties:
+        isNew:
+          type: boolean
+        image:
+          type: string
+        id:
+          type: string
+        email:
+          type: string
+        identityId:
+          type: string
+        name:
+          $ref: '#/components/schemas/Username'
+        active:
+          type: boolean
+    PaymentRequest:
+      type: object
+      properties:
+        amount:
+          minimum: 1
+          type: integer
+          format: int64
+    ClientSecret:
+      type: object
+      properties:
+        clientSecret:
+          type: string
+    TariffPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: '#/components/schemas/PriceData'
+        period:
+          $ref: '#/components/schemas/TariffPeriod'
+        trialDays:
+          type: integer
+          format: int64
+        billingPlanId:
+          type: string
+        enabled:
+          type: boolean
+    PreviewExecutionStatTopDeviceKeys:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        deviceKey:
+          type: string
+    PreviewExecutionStatTotal:
+      type: object
+      properties:
+        time:
+          type: string
+          format: date-time
+        count:
+          type: integer
+          format: int64
+    TenantPreviewExecutionStat:
+      type: object
+      properties:
+        total:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviewExecutionStatTotal'
+        topDevices:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviewExecutionStatTopDeviceKeys'
+    TenantApiUsageStat:
+      type: object
+      properties:
+        hits:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantApiUsageStatHits'
+    TenantApiUsageStatHits:
+      type: object
+      properties:
+        time:
+          type: string
+          format: date-time
+        hitsCount:
+          type: integer
+          format: int64
+        maxRequestPerMinute:
+          type: integer
+          format: int64
+        avgRequestPerMinute:
+          type: number
+    SpamCheckDataLight:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+    SpamCheckSeedData:
+      type: object
+      properties:
+        insertHeader:
+          type: string
+        insertInBody:
+          type: string
+        seedList:
+          type: array
+          items:
+            type: string
+    SpamCheckHeaderData:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: array
+          items:
+            type: string
+    SpamCheckApiLink:
+      type: object
+      properties:
+        bodySize:
+          type: integer
+          format: int64
+        contentLength:
+          type: string
+        contentType:
+          type: string
+        error:
+          type: string
+        redirects:
+          type: integer
+          format: int64
+        responseTimeMs:
+          type: integer
+          format: int64
+        skipped:
+          type: boolean
+        skippedReason:
+          type: string
+        status:
+          type: string
+        statusCode:
+          type: integer
+          format: int64
+        subscribeLink:
+          type: boolean
+        targetUrl:
+          type: string
+        text:
+          type: string
+        unsubscribeLink:
+          type: boolean
+        url:
+          type: string
+    SpamCheckEmailInfoData:
+      type: object
+      properties:
+        bodySize:
+          type: integer
+          format: int64
+        htmlSize:
+          type: integer
+          format: int64
+        id:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckApiLink'
+        imagesCount:
+          type: integer
+          format: int64
+        imagesSize:
+          type: integer
+          format: int64
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckApiLink'
+        linksCount:
+          type: integer
+          format: int64
+        msgSize:
+          type: integer
+          format: int64
+        plainSize:
+          type: integer
+          format: int64
+        projectId:
+          type: string
+        testId:
+          type: string
+    SpamCheckProvider:
+      type: object
+      properties:
+        providerId:
+          type: string
+        name:
+          type: string
+        domains:
+          type: array
+          items:
+            type: string
+    SpamCheckProviderGroup:
+      type: object
+      properties:
+        name:
+          type: string
+        providers:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpamCheckProvider'
+    PreviewDataLight:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        subject:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+        owner:
+          $ref: '#/components/schemas/UserValue'
+    EmailPreviewVersionSummaryData:
+      type: object
+      properties:
+        versionId:
+          type: string
+        versionCreatedAt:
+          type: string
+          format: date-time
+        versionCreatedBy:
+          $ref: '#/components/schemas/UserValue'
+        versionTag:
+          type: string
+        current:
+          type: boolean
+        sharing:
+          $ref: '#/components/schemas/EmailPreviewVersionSummaryDataSharing'
+    EmailPreviewSharedData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        subject:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+        body:
+          type: string
+        previews:
+          type: array
+          items:
+            $ref: '#/components/schemas/DevicePreviewData'
+    DeviceKeyData:
+      type: object
+      properties:
+        deviceKey:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+          enum:
+            - DESKTOP
+            - MOBILE
+            - WEB
+            - MISC
+        enabled:
+          type: boolean
+    EmailDataLight:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          $ref: '#/components/schemas/UserValue'
+        lastModifiedAt:
+          type: string
+          format: date-time
+        lastModifiedBy:
+          $ref: '#/components/schemas/UserValue'
+    EmailOpenData:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        openType:
+          type: string
+          enum:
+            - OPEN
+            - FORWARD
+            - PRINT
+            - DELETE
+        openFromIp:
+          type: string
+        duration:
+          type: number
+        trackKey:
+          type: string
+        userAgent:
+          $ref: '#/components/schemas/EmailOpenDataUserAgent'
+        location:
+          $ref: '#/components/schemas/LocationData'
+    EmailOpenDataUserAgent:
+      type: object
+      properties:
+        agentString:
+          type: string
+        agentName:
+          type: string
+    EmailTagStatistics:
+      type: object
+      properties:
+        metrics:
+          $ref: '#/components/schemas/EmailTagStatisticsMetrics'
+        userAgents:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTagStatisticsUserAgents'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTagStatisticsLocations'
+        openList:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailOpenData'
+    EmailTagStatisticsLocations:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/LocationData'
+        opens:
+          type: integer
+          format: int32
+    EmailTagStatisticsMetrics:
+      type: object
+      properties:
+        opens:
+          type: integer
+          format: int32
+        unique:
+          type: integer
+          format: int32
+        forwards:
+          type: integer
+          format: int32
+        prints:
+          type: integer
+          format: int32
+        avarageDuration:
+          type: integer
+          format: int64
+    EmailTagStatisticsUserAgents:
+      type: object
+      properties:
+        agentName:
+          type: string
+        opens:
+          type: integer
+          format: int32
+    LocationData:
+      type: object
+      properties:
+        name:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+    AccountRegistrationAuthenticated:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountData'
+        masterUser:
+          $ref: '#/components/schemas/UserData'
+        token:
+          $ref: '#/components/schemas/AccountRegistrationAuthenticatedToken'
+    AccountRegistrationAuthenticatedToken:
+      type: object
+      properties:
+        accessToken:
+          $ref: '#/components/schemas/AccountRegistrationAuthenticatedTokenAccessToken'
+        refreshToken:
+          $ref: '#/components/schemas/AccountRegistrationAuthenticatedTokenAccessToken'
+    AccountRegistrationAuthenticatedTokenAccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+    CustomerInvoices:
+      type: object
+      properties:
+        id:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: integer
+          format: int64
+        periodStart:
+          type: integer
+          format: int64
+        periodEnd:
+          type: integer
+          format: int64
+        customer:
+          type: string
+        number:
+          type: string
+        pdf:
+          type: string
+    FeatureParameters:
+      type: object
+      properties:
+        accounting:
+          $ref: '#/components/schemas/FeatureParametersAccounting'
+        analytics:
+          $ref: '#/components/schemas/FeatureParametersAnalytics'
+        api:
+          $ref: '#/components/schemas/FeatureParametersApi'
+        editor:
+          $ref: '#/components/schemas/FeatureParametersEditor'
+        preview:
+          $ref: '#/components/schemas/FeatureParametersPreview'
+        previewInbox:
+          $ref: '#/components/schemas/FeatureParametersPreviewInbox'
+        spamCheck:
+          $ref: '#/components/schemas/FeatureParametersSpamCheck'
+    FeatureParametersAccounting:
+      type: object
+      properties:
+        maxUsersCount:
+          minimum: -1
+          type: integer
+          format: int32
+    FeatureParametersAnalytics:
+      type: object
+      properties:
+        createAllowed:
+          type: boolean
+        hitsCountPerTag:
+          type: integer
+          format: int32
+        tagActivePeriod:
+          $ref: '#/components/schemas/PeriodValue'
+        exportAllowed:
+          type: boolean
+    FeatureParametersApi:
+      type: object
+      properties:
+        unlimitedRequestRate:
+          type: boolean
+    FeatureParametersEditor:
+      type: object
+      properties:
+        emailCount:
+          type: integer
+          format: int32
+    FeatureParametersPreview:
+      type: object
+      properties:
+        executeAllowed:
+          type: boolean
+        previewCount:
+          type: integer
+          format: int32
+        putWatermark:
+          type: boolean
+        deviceKeysAvailable:
+          $ref: '#/components/schemas/FeatureParametersPreviewDeviceKeysAvailable'
+        priorityModifier:
+          maximum: 1
+          exclusiveMaximum: false
+          minimum: 0
+          exclusiveMinimum: false
+          type: number
+        maxVersionsPerPreview:
+          minimum: -1
+          type: integer
+          format: int32
+        sharingAllowed:
+          type: boolean
+    FeatureParametersPreviewDeviceKeysAvailable:
+      type: object
+      properties:
+        include:
+          type: array
+          items:
+            type: string
+        exclude:
+          type: array
+          items:
+            type: string
+    FeatureParametersPreviewInbox:
+      type: object
+      properties:
+        createCount:
+          minimum: -1
+          type: integer
+          format: int32
+    FeatureParametersSpamCheck:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    PeriodValue:
+      type: object
+      properties:
+        day:
+          minimum: 0
+          type: integer
+          format: int32
+        month:
+          minimum: 0
+          type: integer
+          format: int32
+        year:
+          minimum: 0
+          type: integer
+          format: int32
+    Meta:
+      type: object
+      properties:
+        page:
+          type: integer
+          description: Current page number.
+        perPage:
+          type: integer
+          description: Number of items per page.
+        totalPages:
+          type: integer
+          description: Total number of pages.
+    PaginatedPreviewDataLightResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviewDataLight'
+        meta:
+          $ref: '#/components/schemas/Meta'
