@@ -1,6 +1,6 @@
 [Documentation](https://github.com/VerifyTests/Verify.Ulid)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via [Ulid](https://github.com/Cysharp/Ulid) package.<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
+Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewDervices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
 **See [Milestones](https://github.com/VerifyTests/Verify.Ulid/milestones?state=closed) for release notes.**
 
