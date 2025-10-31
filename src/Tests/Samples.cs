@@ -1,4 +1,7 @@
 ﻿using EmailPreviewServices;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 
 [TestFixture]
 public class Samples
@@ -80,8 +83,35 @@ public class Samples
             await Task.Delay(delay);
         }
 
+
+        using var image =await Image.LoadAsync<Rgba32>(streamAsync);
+
+        var cropHeight = image.Height;
+        for (var y = image.Height - 1; y >= 0; y--)
+        {
+            var hasContent = false;
+            for (var x = 0; x < image.Width; x++)
+            {
+                var pixel = image[x, y];
+                if (pixel.R < 240 || pixel.G < 240 || pixel.B < 240)
+                {
+                    hasContent = true;
+                    break;
+                }
+            }
+            if (hasContent)
+            {
+                cropHeight = y + 1;
+                break;
+            }
+        }
+
+        image.Mutate(ctx => ctx.Crop(image.Width, cropHeight));
+        var memoryStream = new MemoryStream();
+        await image.SaveAsPngAsync(memoryStream);
+        memoryStream.Position = 0;
         await service.DeletePreviewAsync(preview.Id);
-        await Verify(streamAsync, extension: "png");
+        await Verify(memoryStream, extension: "png");
         // await using var streamAsync = await httpClient.GetStreamAsync(preview.Body);
         // await using var fileStream = File.Create("temp.html");
         // await streamAsync.CopyToAsync(fileStream);
