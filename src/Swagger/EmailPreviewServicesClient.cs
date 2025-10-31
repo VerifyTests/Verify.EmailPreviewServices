@@ -27,7 +27,7 @@ namespace EmailPreviewServices
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewServicesClient 
+    internal partial class EmailPreviewServicesClient 
     {
         #pragma warning disable 8618
         private string _baseUrl;
@@ -8198,7 +8198,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckUpdate
+    internal partial class SpamCheckUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -8217,7 +8217,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataBarracudaBRTS
+    internal partial class DataBarracudaBRTS
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domains")]
@@ -8235,7 +8235,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataBarracudaEvidence
+    internal partial class DataBarracudaEvidence
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domains")]
@@ -8253,7 +8253,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataBarracudaStatus
+    internal partial class DataBarracudaStatus
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("status")]
@@ -8271,7 +8271,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataBookACall
+    internal partial class DataBookACall
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
@@ -8289,7 +8289,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataCount
+    internal partial class DataCount
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
@@ -8307,7 +8307,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataDmarcDomain
+    internal partial class DataDmarcDomain
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
@@ -8325,7 +8325,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataDmarcRecord
+    internal partial class DataDmarcRecord
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
@@ -8349,7 +8349,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataDmarcRecordNotInGlockapps
+    internal partial class DataDmarcRecordNotInGlockapps
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
@@ -8370,7 +8370,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataEmails
+    internal partial class DataEmails
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("emails")]
@@ -8388,7 +8388,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataHasBrokenLinks
+    internal partial class DataHasBrokenLinks
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("links")]
@@ -8406,7 +8406,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataImageTooLarge
+    internal partial class DataImageTooLarge
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("size")]
@@ -8427,7 +8427,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataMS
+    internal partial class DataMS
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
@@ -8451,7 +8451,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataResponseTimeTooLong
+    internal partial class DataResponseTimeTooLong
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("links")]
@@ -8469,7 +8469,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataSenderScore
+    internal partial class DataSenderScore
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("value")]
@@ -8487,7 +8487,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataSize
+    internal partial class DataSize
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("size")]
@@ -8505,7 +8505,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataSpfRecord
+    internal partial class DataSpfRecord
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
@@ -8529,7 +8529,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DataSpfRecordMissing
+    internal partial class DataSpfRecordMissing
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("domain")]
@@ -8547,7 +8547,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Flag
+    internal partial class Flag
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("DMARC_RECORD_POLICY_NONE")]
@@ -8649,7 +8649,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagDmarcRecordError
+    internal partial class FlagDmarcRecordError
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8670,7 +8670,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagDmarcRecordNotingLockApps
+    internal partial class FlagDmarcRecordNotingLockApps
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8691,7 +8691,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagDmarcRecordPolicyNone
+    internal partial class FlagDmarcRecordPolicyNone
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8712,7 +8712,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsAolInspam
+    internal partial class FlagGappsAolInspam
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8733,7 +8733,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsBarracudaBrts
+    internal partial class FlagGappsBarracudaBrts
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8754,7 +8754,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsBarracudaEvidence
+    internal partial class FlagGappsBarracudaEvidence
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8775,7 +8775,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsBarracudaStatus
+    internal partial class FlagGappsBarracudaStatus
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8796,7 +8796,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsBookACall
+    internal partial class FlagGappsBookACall
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8817,7 +8817,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsEmailSizeTooLarge
+    internal partial class FlagGappsEmailSizeTooLarge
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8838,7 +8838,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsExchangeOrgscl
+    internal partial class FlagGappsExchangeOrgscl
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8859,7 +8859,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsHasBrokenLinks
+    internal partial class FlagGappsHasBrokenLinks
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8880,7 +8880,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsImageTooLargeV2
+    internal partial class FlagGappsImageTooLargeV2
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8901,7 +8901,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsSenderScore
+    internal partial class FlagGappsSenderScore
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8922,7 +8922,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagGappsTooManyImages
+    internal partial class FlagGappsTooManyImages
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8943,7 +8943,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagResponseTimeTooLong
+    internal partial class FlagResponseTimeTooLong
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8964,7 +8964,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagSpfRecordError
+    internal partial class FlagSpfRecordError
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -8985,7 +8985,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FlagSpfRecordMissing
+    internal partial class FlagSpfRecordMissing
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -9006,7 +9006,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class LinkData
+    internal partial class LinkData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("errorLevel")]
@@ -9030,7 +9030,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckData
+    internal partial class SpamCheckData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9087,7 +9087,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataDnsbl
+    internal partial class SpamCheckDataDnsbl
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("complete")]
@@ -9108,7 +9108,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataDnsblServers
+    internal partial class SpamCheckDataDnsblServers
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("ipAddress")]
@@ -9135,7 +9135,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSender
+    internal partial class SpamCheckDataSender
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
@@ -9174,7 +9174,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFilters
+    internal partial class SpamCheckDataSpamFilters
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("spamAssassin")]
@@ -9201,7 +9201,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFiltersBarracuda
+    internal partial class SpamCheckDataSpamFiltersBarracuda
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
@@ -9231,7 +9231,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFiltersGoogleApps
+    internal partial class SpamCheckDataSpamFiltersGoogleApps
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
@@ -9258,7 +9258,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFiltersHwBarracuda
+    internal partial class SpamCheckDataSpamFiltersHwBarracuda
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
@@ -9288,7 +9288,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFiltersSpamAssassin
+    internal partial class SpamCheckDataSpamFiltersSpamAssassin
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("active")]
@@ -9315,7 +9315,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSpamFiltersSpamAssassinHeaders
+    internal partial class SpamCheckDataSpamFiltersSpamAssassinHeaders
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("score")]
@@ -9339,7 +9339,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataSummary
+    internal partial class SpamCheckDataSummary
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("inbox")]
@@ -9381,7 +9381,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckInboxData
+    internal partial class SpamCheckInboxData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bimi")]
@@ -9450,7 +9450,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserValue
+    internal partial class UserValue
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accountId")]
@@ -9480,7 +9480,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewUpdate
+    internal partial class PreviewUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9500,7 +9500,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DevicePreviewData
+    internal partial class DevicePreviewData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKey")]
@@ -9525,7 +9525,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DevicePreviewDataPreview
+    internal partial class DevicePreviewDataPreview
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("original")]
@@ -9546,7 +9546,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewData
+    internal partial class EmailPreviewData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9588,7 +9588,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewVersionUpdate
+    internal partial class PreviewVersionUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionTag")]
@@ -9606,7 +9606,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewVersionData
+    internal partial class EmailPreviewVersionData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionId")]
@@ -9648,7 +9648,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewVersionSummaryDataSharing
+    internal partial class EmailPreviewVersionSummaryDataSharing
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("enabled")]
@@ -9669,7 +9669,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class InboxUpdate
+    internal partial class InboxUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9693,7 +9693,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewInboxData
+    internal partial class EmailPreviewInboxData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9738,7 +9738,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailBodyData
+    internal partial class EmailBodyData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("content")]
@@ -9756,7 +9756,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailContentData
+    internal partial class EmailContentData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("key")]
@@ -9780,7 +9780,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailUpdate
+    internal partial class EmailUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9801,7 +9801,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailData
+    internal partial class EmailData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9837,7 +9837,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AnalyticsTagUpdate
+    internal partial class AnalyticsTagUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9857,7 +9857,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailTagData
+    internal partial class EmailTagData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9890,7 +9890,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountUpdate
+    internal partial class AccountUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9910,7 +9910,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountData
+    internal partial class AccountData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -9940,7 +9940,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountUserUpdate
+    internal partial class AccountUserUpdate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -9959,7 +9959,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Username
+    internal partial class Username
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
@@ -9980,7 +9980,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserDataPublic
+    internal partial class UserDataPublic
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -10016,7 +10016,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserImagePreviewData
+    internal partial class UserImagePreviewData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("original")]
@@ -10040,7 +10040,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CustomerParam
+    internal partial class CustomerParam
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("paymentToken")]
@@ -10058,7 +10058,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckCreate
+    internal partial class SpamCheckCreate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -10090,7 +10090,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Preview
+    internal partial class Preview
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -10117,7 +10117,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewVersionRequest
+    internal partial class PreviewVersionRequest
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("subject")]
@@ -10141,7 +10141,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Retry
+    internal partial class Retry
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("keys")]
@@ -10159,7 +10159,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class InboxCreate
+    internal partial class InboxCreate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -10186,7 +10186,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailCreate
+    internal partial class EmailCreate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -10207,7 +10207,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailHtmlData
+    internal partial class EmailHtmlData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("html")]
@@ -10225,7 +10225,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RefreshToken
+    internal partial class RefreshToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("refreshToken")]
@@ -10245,7 +10245,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AuthToken
+    internal partial class AuthToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accessToken")]
@@ -10266,7 +10266,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AuthTokenAccessToken
+    internal partial class AuthTokenAccessToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
@@ -10287,7 +10287,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AuthTokenRefreshToken
+    internal partial class AuthTokenRefreshToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
@@ -10308,7 +10308,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserLogin
+    internal partial class UserLogin
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
@@ -10329,7 +10329,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AnalyticsTagCreate
+    internal partial class AnalyticsTagCreate
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -10349,7 +10349,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountUsersName
+    internal partial class AccountUsersName
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("firstName")]
@@ -10370,7 +10370,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserRegister
+    internal partial class UserRegister
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
@@ -10394,7 +10394,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PasswordChange
+    internal partial class PasswordChange
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("newPassword")]
@@ -10414,7 +10414,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ResetPassword
+    internal partial class ResetPassword
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("resetPasswordCode")]
@@ -10435,7 +10435,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ResetPasswordRequest
+    internal partial class ResetPasswordRequest
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("callbackUrl")]
@@ -10459,7 +10459,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserLegacyApiKey
+    internal partial class UserLegacyApiKey
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
@@ -10477,7 +10477,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserApiKey
+    internal partial class UserApiKey
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("apiKey")]
@@ -10495,7 +10495,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Activation
+    internal partial class Activation
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("activationCode")]
@@ -10515,7 +10515,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ActivationRequest
+    internal partial class ActivationRequest
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("callbackUrl")]
@@ -10538,7 +10538,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TariffPlanSubscription
+    internal partial class TariffPlanSubscription
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("tariffId")]
@@ -10567,7 +10567,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PriceData
+    internal partial class PriceData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
@@ -10591,7 +10591,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TariffPeriod
+    internal partial class TariffPeriod
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("interval")]
@@ -10614,7 +10614,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TariffSubscriptionData
+    internal partial class TariffSubscriptionData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -10678,7 +10678,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Register
+    internal partial class Register
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("email")]
@@ -10708,7 +10708,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountRegistration
+    internal partial class AccountRegistration
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("account")]
@@ -10729,7 +10729,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UserData
+    internal partial class UserData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("isNew")]
@@ -10765,7 +10765,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PaymentRequest
+    internal partial class PaymentRequest
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("amount")]
@@ -10784,7 +10784,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ClientSecret
+    internal partial class ClientSecret
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("clientSecret")]
@@ -10802,7 +10802,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TariffPlan
+    internal partial class TariffPlan
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -10841,7 +10841,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewExecutionStatTopDeviceKeys
+    internal partial class PreviewExecutionStatTopDeviceKeys
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
@@ -10862,7 +10862,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewExecutionStatTotal
+    internal partial class PreviewExecutionStatTotal
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("time")]
@@ -10883,7 +10883,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TenantPreviewExecutionStat
+    internal partial class TenantPreviewExecutionStat
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("total")]
@@ -10904,7 +10904,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TenantApiUsageStat
+    internal partial class TenantApiUsageStat
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("hits")]
@@ -10922,7 +10922,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TenantApiUsageStatHits
+    internal partial class TenantApiUsageStatHits
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("time")]
@@ -10949,7 +10949,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckDataLight
+    internal partial class SpamCheckDataLight
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -10982,7 +10982,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckSeedData
+    internal partial class SpamCheckSeedData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("insertHeader")]
@@ -11006,7 +11006,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckHeaderData
+    internal partial class SpamCheckHeaderData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -11027,7 +11027,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckApiLink
+    internal partial class SpamCheckApiLink
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bodySize")]
@@ -11087,7 +11087,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckEmailInfoData
+    internal partial class SpamCheckEmailInfoData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("bodySize")]
@@ -11138,7 +11138,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckProvider
+    internal partial class SpamCheckProvider
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("providerId")]
@@ -11162,7 +11162,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SpamCheckProviderGroup
+    internal partial class SpamCheckProviderGroup
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -11183,7 +11183,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PreviewDataLight
+    internal partial class PreviewDataLight
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -11222,7 +11222,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewVersionSummaryData
+    internal partial class EmailPreviewVersionSummaryData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("versionId")]
@@ -11255,7 +11255,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailPreviewSharedData
+    internal partial class EmailPreviewSharedData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -11297,7 +11297,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class DeviceKeyData
+    internal partial class DeviceKeyData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("deviceKey")]
@@ -11325,7 +11325,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailDataLight
+    internal partial class EmailDataLight
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -11358,7 +11358,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailOpenData
+    internal partial class EmailOpenData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("timestamp")]
@@ -11395,7 +11395,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailOpenDataUserAgent
+    internal partial class EmailOpenDataUserAgent
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("agentString")]
@@ -11416,7 +11416,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailTagStatistics
+    internal partial class EmailTagStatistics
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("metrics")]
@@ -11443,7 +11443,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailTagStatisticsLocations
+    internal partial class EmailTagStatisticsLocations
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("location")]
@@ -11464,7 +11464,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailTagStatisticsMetrics
+    internal partial class EmailTagStatisticsMetrics
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("opens")]
@@ -11494,7 +11494,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EmailTagStatisticsUserAgents
+    internal partial class EmailTagStatisticsUserAgents
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("agentName")]
@@ -11515,7 +11515,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class LocationData
+    internal partial class LocationData
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -11539,7 +11539,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountRegistrationAuthenticated
+    internal partial class AccountRegistrationAuthenticated
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("account")]
@@ -11563,7 +11563,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountRegistrationAuthenticatedToken
+    internal partial class AccountRegistrationAuthenticatedToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accessToken")]
@@ -11584,7 +11584,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccountRegistrationAuthenticatedTokenAccessToken
+    internal partial class AccountRegistrationAuthenticatedTokenAccessToken
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("token")]
@@ -11605,7 +11605,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CustomerInvoices
+    internal partial class CustomerInvoices
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
@@ -11644,7 +11644,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParameters
+    internal partial class FeatureParameters
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("accounting")]
@@ -11680,7 +11680,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersAccounting
+    internal partial class FeatureParametersAccounting
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("maxUsersCount")]
@@ -11699,7 +11699,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersAnalytics
+    internal partial class FeatureParametersAnalytics
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("createAllowed")]
@@ -11726,7 +11726,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersApi
+    internal partial class FeatureParametersApi
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("unlimitedRequestRate")]
@@ -11744,7 +11744,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersEditor
+    internal partial class FeatureParametersEditor
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("emailCount")]
@@ -11762,7 +11762,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersPreview
+    internal partial class FeatureParametersPreview
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("executeAllowed")]
@@ -11800,7 +11800,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersPreviewDeviceKeysAvailable
+    internal partial class FeatureParametersPreviewDeviceKeysAvailable
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("include")]
@@ -11821,7 +11821,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersPreviewInbox
+    internal partial class FeatureParametersPreviewInbox
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("createCount")]
@@ -11840,7 +11840,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FeatureParametersSpamCheck
+    internal partial class FeatureParametersSpamCheck
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("count")]
@@ -11858,7 +11858,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PeriodValue
+    internal partial class PeriodValue
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("day")]
@@ -11885,7 +11885,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Meta
+    internal partial class Meta
     {
 
         /// <summary>
@@ -11918,7 +11918,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PaginatedPreviewDataLightResponse
+    internal partial class PaginatedPreviewDataLightResponse
     {
 
         [System.Text.Json.Serialization.JsonPropertyName("data")]
@@ -11939,7 +11939,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum SortBy
+    internal enum SortBy
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"id")]
@@ -11960,7 +11960,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum SortDirection
+    internal enum SortDirection
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"asc")]
@@ -11972,7 +11972,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum DevicePreviewDataStatus
+    internal enum DevicePreviewDataStatus
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"PROCESSING")]
@@ -11987,7 +11987,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum TariffPeriodInterval
+    internal enum TariffPeriodInterval
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"DAY")]
@@ -12005,7 +12005,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum TariffSubscriptionDataStatus
+    internal enum TariffSubscriptionDataStatus
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"TRIALING")]
@@ -12026,7 +12026,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum DeviceKeyDataCategory
+    internal enum DeviceKeyDataCategory
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"DESKTOP")]
@@ -12044,7 +12044,7 @@ namespace EmailPreviewServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.6.1.0 (NJsonSchema v11.5.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public enum EmailOpenDataOpenType
+    internal enum EmailOpenDataOpenType
     {
 
         [System.Text.Json.Serialization.JsonStringEnumMemberName(@"OPEN")]

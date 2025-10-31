@@ -1,4 +1,4 @@
 copy from here view-source:https://app.emailpreviewservices.com/api/doc
 save to spec.yaml
 run 
-nswag openapi2csclient /input:./spec.yaml /classname:EmailPreviewServicesClient /jsonLibrary:SystemTextJson /namespace:EmailPreviewServices /generateNullableReferenceTypes:true /output:EmailPreviewServicesClient.cs
+nswag openapi2csclient /input:./spec.yaml /classname:EmailPreviewServicesClient /jsonLibrary:SystemTextJson /namespace:EmailPreviewServices /generateNullableReferenceTypes:true /output:EmailPreviewServicesClient.cs /ClientClassAccessModifier:internal /TypeAccessModifier:internal
