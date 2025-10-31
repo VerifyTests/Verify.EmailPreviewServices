@@ -3,17 +3,19 @@
 [TestFixture]
 public class Samples
 {
+    static readonly HttpClient httpClient;
     static readonly EmailPreviewServicesClient service;
 
     static Samples()
     {
         var apiKey = Environment.GetEnvironmentVariable("EmailPreviewServicesApiKey")!;
-        var httpClient = new HttpClient();
+        httpClient = new HttpClient();
         httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
         httpClient.DefaultRequestHeaders.Authorization = new("Bearer", apiKey);
         httpClient.DefaultRequestHeaders.Accept.Add(new("application/json"));
         service = new("https://app.emailpreviewservices.com/api", httpClient);
     }
+
     [Test]
     public async Task DeviceList()
     {
@@ -22,6 +24,7 @@ public class Samples
     }
 
     [Test]
+    [Explicit]
     public async Task Simple()
     {
         var html =
@@ -52,7 +55,35 @@ public class Samples
             </html>
             """;
 
-        var deviceListAsync = await service.PreGetDeviceListAsync();
-        await Verify(deviceListAsync);
+        var preview = await service.ExecutePreviewAsync(
+            new()
+            {
+                Name = "the name",
+                Body = html,
+                Subject = "subhect",
+                Devices = ["microsoft_outlook_2016"],
+            });
+        const int maxAttempts = 30;
+        var delay = TimeSpan.FromSeconds(2);
+
+        Stream streamAsync = null!;
+        for (var i = 0; i < maxAttempts; i++)
+        {
+            var devicesPreview = await service.GetDevicePreviewAsync(preview.Id, "microsoft_outlook_2016");
+
+            if (devicesPreview.Status == DevicePreviewDataStatus.SUCCESSFUL)
+            {
+                streamAsync = await httpClient.GetStreamAsync(devicesPreview.Preview.Original);
+                break;
+            }
+
+            await Task.Delay(delay);
+        }
+
+        await service.DeletePreviewAsync(preview.Id);
+        await Verify(streamAsync, extension: "png");
+        // await using var streamAsync = await httpClient.GetStreamAsync(preview.Body);
+        // await using var fileStream = File.Create("temp.html");
+        // await streamAsync.CopyToAsync(fileStream);
     }
 }
