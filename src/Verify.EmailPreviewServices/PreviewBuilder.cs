@@ -48,7 +48,7 @@
         }
     }
 
-    static async Task<FileResponse> GetDevicePreviews(EmailPreviewData preview)
+    static async Task<ICollection<DevicePreviewData>> GetDevicePreviews(EmailPreviewData preview)
     {
         const int maxAttempts = 100;
         var delay = TimeSpan.FromSeconds(1);
