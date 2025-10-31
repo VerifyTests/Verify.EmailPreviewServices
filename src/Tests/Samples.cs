@@ -20,6 +20,13 @@ public class Samples
         var devices = await service.GetDeviceListAsync();
         await Verify(devices);
     }
+    [Test]
+    [Explicit]
+    public async Task EmailList()
+    {
+        var devices = await service.GetEmailsAsync();
+        await Verify(devices);
+    }
 
     [Test]
     [Explicit]
