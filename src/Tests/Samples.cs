@@ -85,7 +85,7 @@ public class Samples
         var preview = new EmailPreview
         {
             Html = html,
-            Devices = [Device.AppleMailDark]
+            Devices = [Device.WPpl]
         };
         await Verify(preview);
     }

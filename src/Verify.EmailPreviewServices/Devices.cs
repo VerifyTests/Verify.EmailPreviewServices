@@ -22,10 +22,20 @@ static class Devices
 
         deviceScrubbing = new()
         {
+            [Device.Android9] = new()
+            {
+                Top = 550,
+                Bottom = 261,
+                Left = 21,
+                Right = 21
+            },
             [Device.Outlook2016] = new()
             {
-                Top = 220, Background = 240
-            }
+                Top = 220,
+                BorderTolerance = 11,
+                Left = 10,
+                Right = 50
+            },
         };
     }
 
@@ -42,7 +52,8 @@ static class Devices
 class ScrubSpec
 {
     public int Top { get; set; }
+    public int Bottom { get; set; }
     public int Right { get; set; }
     public int Left { get; set; }
-    public int? Background { get; set; }
+    public int? BorderTolerance { get; set; }
 }
