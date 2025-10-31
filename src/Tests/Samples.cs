@@ -30,7 +30,7 @@ public class Samples
     [Explicit]
     public async Task BuildDeviceEnum()
     {
-        var devices = await PreviewBuilder.Service.GetDeviceListAsync();
+        var devices = await Builder.Service.GetDeviceListAsync();
         var stringBuilder = new StringBuilder();
         foreach (var device in devices.OrderBy(_=>_.Name))
         {
@@ -59,7 +59,7 @@ public class Samples
     [Explicit]
     public async Task EmailList()
     {
-        var devices = await PreviewBuilder.Service.GetEmailsAsync();
+        var devices = await Builder.Service.GetEmailsAsync();
         await Verify(devices);
     }
 

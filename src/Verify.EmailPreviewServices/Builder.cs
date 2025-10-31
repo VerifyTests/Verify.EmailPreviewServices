@@ -1,9 +1,9 @@
-﻿static class PreviewBuilder
+﻿static class Builder
 {
     internal static readonly HttpClient HttpClient;
     internal static readonly EmailPreviewServicesClient Service;
 
-    static PreviewBuilder()
+    static Builder()
     {
         var apiKey = VerifyEmailPreviewServices.ApiKey;
         HttpClient = new();
@@ -26,14 +26,17 @@
                 Devices = instance.Devices.Select(Devices.KeyForDevice).ToList(),
             });
 
-        var previews = await GetDevicePreviews(preview);
+        await GetDevicePreviews(preview);
 
-        foreach (var devicePreview in previews.Previews)
+        using var zip = await Service.GetPreviewZipAsync(preview.Id);
+
+        using var zipArchive = new ZipArchive(zip.Stream, ZipArchiveMode.Read);
+        foreach (var entry in zipArchive.Entries)
         {
-            await using var httpStream = await HttpClient.GetStreamAsync(devicePreview.Preview.Original);
-            var device = Devices.DeviceForKey(devicePreview.DeviceKey);
-            var memoryStream = await PreviewScrubber.Scrub(httpStream, device);
-            targets.Add(new("jpg", memoryStream, device.ToString()));
+            var device = Devices.DeviceForKey(Path.GetFileNameWithoutExtension(entry.Name));
+            var zipStream = await entry.OpenAsync();
+            var memoryStream = await Scrubber.Scrub(zipStream, device);
+            targets.Add(new("webp", memoryStream, device.ToString()));
         }
 
         await Service.DeletePreviewAsync(preview.Id);
@@ -48,7 +51,7 @@
         }
     }
 
-    static async Task<EmailPreviewData> GetDevicePreviews(EmailPreviewData preview)
+    static async Task GetDevicePreviews(EmailPreviewData preview)
     {
         const int maxAttempts = 100;
         var delay = TimeSpan.FromSeconds(1);
@@ -59,7 +62,7 @@
 
             if (previews.Previews.All(_ => _.Status == DevicePreviewDataStatus.SUCCESSFUL))
             {
-                return previews;
+                return;
             }
 
             await Task.Delay(delay);

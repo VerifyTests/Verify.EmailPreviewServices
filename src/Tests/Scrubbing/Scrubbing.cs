@@ -22,7 +22,7 @@ public class Scrubbing
     public async Task ScrubTesting([Values] Device device)
     {
         var fileStream = File.OpenRead(Path.Combine(path, $"{device}.jpg"));
-        var scrubbed = await PreviewScrubber.Scrub(fileStream, device);
+        var scrubbed = await Scrubber.Scrub(fileStream, device);
         await Verify(scrubbed, extension: "jpg");
     }
 }

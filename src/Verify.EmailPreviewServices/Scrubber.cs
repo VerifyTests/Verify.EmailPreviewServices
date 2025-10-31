@@ -1,4 +1,4 @@
-﻿public static class PreviewScrubber
+﻿static class Scrubber
 {
     public static async Task<Stream> Scrub(Stream stream, Device device)
     {
@@ -9,7 +9,7 @@
             Crop(image, spec);
             RemoveBottom(image, spec.BottomTolerance);
 
-            await image.SaveAsJpegAsync(memoryStream);
+            await image.SaveAsWebpAsync(memoryStream);
         }
         else
         {

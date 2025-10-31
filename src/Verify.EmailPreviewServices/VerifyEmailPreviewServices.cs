@@ -15,7 +15,7 @@ public static class VerifyEmailPreviewServices
         VerifyEmailPreviewServices.apiKey = apiKey;
         InnerVerifier.ThrowIfVerifyHasBeenRun();
         VerifierSettings.RegisterFileConverter<EmailPreview>(
-            (instance, _) => PreviewBuilder.Convert(instance));
+            (instance, _) => Builder.Convert(instance));
     }
 
     static string? apiKey;
