@@ -55,7 +55,7 @@
 
     static void Crop(Image<Rgba32> image, ScrubSpec spec)
     {
-        if (spec is {Left: 0, Bottom: 0, Left: 0, Right: 0})
+        if (spec is {Top: 0, Bottom: 0, Left: 0, Right: 0})
         {
             return;
         }
