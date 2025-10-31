@@ -20,39 +20,6 @@
         return memoryStream;
     }
 
-    static void ScrubBottom(Image<Rgba32> image, int? color)
-    {
-        if (color == null)
-        {
-            return;
-        }
-
-        var colorValue = color.Value;
-        var cropHeight = image.Height;
-        var width = image.Width;
-        for (var y = image.Height - 1; y >= 0; y--)
-        {
-            var hasContent = false;
-            for (var x = 0; x < width; x++)
-            {
-                var pixel = image[x, y];
-                if (pixel.R < colorValue || pixel.G < colorValue || pixel.B < colorValue)
-                {
-                    hasContent = true;
-                    break;
-                }
-            }
-
-            if (hasContent)
-            {
-                cropHeight = y + 1;
-                break;
-            }
-        }
-
-        image.Mutate(_ => _.Crop(new(0, 0, width, cropHeight)));
-    }
-
     static void Crop(Image<Rgba32> image, ScrubSpec spec)
     {
         if (spec is {Top: 0, Bottom: 0, Left: 0, Right: 0})
