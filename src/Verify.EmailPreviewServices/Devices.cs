@@ -159,7 +159,7 @@ static class Devices
             },
             [Device.iPhone13ProMax] = new()
             {
-                Top = 119,
+                Top = 177,
                 Bottom = 0,
                 Left = 0,
                 Right = 0,

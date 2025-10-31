@@ -7,7 +7,7 @@
         {
             using var image = await Image.LoadAsync<Rgba32>(stream);
             Crop(image, spec);
-            RemoveBottom(image,spec.BottomTolerance);
+            RemoveBottom(image, spec.BottomTolerance);
 
             await image.SaveAsPngAsync(memoryStream);
         }
@@ -77,7 +77,7 @@
 
         var toleranceValue = tolerance.Value;
         // Detect border color from bottom middle pixel
-        var borderColor = image[image.Width/2, image.Height-1];
+        var borderColor = image[image.Width / 2, image.Height - 1];
 
         var bottom = image.Height - 1;
 
@@ -100,34 +100,26 @@
             }
         }
 
+        if (bottom + 25 < image.Height)
+        {
+            bottom += 25;
+        }
         // Crop to content bounds
-        if (bottom < image.Width)
+        if (bottom < image.Height)
         {
-            image.Mutate(_ => _.Crop(new(
-                0,
-                0,
-                image.Width,
-                bottom
-            )));
+            image.Mutate(_ =>
+                _.Crop(new(
+                    0,
+                    0,
+                    image.Width,
+                    bottom
+                )));
         }
     }
 
-    static bool ColorsMatch(Rgba32 c1, Rgba32 c2, int tolerance)
-    {
-        if (Math.Abs(c1.R - c2.R) > tolerance)
-        {
-            return false;
-        }
-
-        if (Math.Abs(c1.G - c2.G) > tolerance)
-        {
-            return false;
-        }
-
-        if (Math.Abs(c1.B - c2.B) > tolerance)
-        {
-            return false;
-        }
-        return Math.Abs(c1.A - c2.A) <= tolerance;
-    }
+    static bool ColorsMatch(Rgba32 c1, Rgba32 c2, int tolerance) =>
+        Math.Abs(c1.R - c2.R) <= tolerance &&
+        Math.Abs(c1.G - c2.G) <= tolerance &&
+        Math.Abs(c1.B - c2.B) <= tolerance &&
+        Math.Abs(c1.A - c2.A) <= tolerance;
 }
