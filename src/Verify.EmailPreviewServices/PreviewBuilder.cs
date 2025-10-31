@@ -15,6 +15,7 @@
 
     public static async Task<ConversionResult> Convert(EmailPreview instance)
     {
+        ThrowIfDuplictes(instance.Devices);
         var targets = new List<Target>();
         var preview = await service.ExecutePreviewAsync(
             new()
@@ -39,7 +40,15 @@
         return new(null, targets);
     }
 
-    static async Task<ICollection<DevicePreviewData>> GetDevicePreviews(EmailPreviewData preview)
+    static void ThrowIfDuplictes(List<Device> devices)
+    {
+        if (devices.Count != devices.Distinct().Count())
+        {
+            throw new InvalidOperationException("Duplicate devices found.");
+        }
+    }
+
+    static async Task<FileResponse> GetDevicePreviews(EmailPreviewData preview)
     {
         const int maxAttempts = 100;
         var delay = TimeSpan.FromSeconds(1);
