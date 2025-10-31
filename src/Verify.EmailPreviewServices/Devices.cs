@@ -29,12 +29,29 @@ static class Devices
                 Left = 21,
                 Right = 21
             },
+            [Device.AOLBasic] = new()
+            {
+                Top = 250,
+                Bottom = 0,
+                Left = 222,
+                Right = 315,
+                BottomTolerance = 10,
+            },
+            [Device.AOLChrome] = new()
+            {
+                Top = 250,
+                Bottom = 0,
+                Left = 222,
+                Right = 355,
+                BottomTolerance = 10,
+            },
             [Device.Outlook2016] = new()
             {
                 Top = 220,
-                BorderTolerance = 11,
-                Left = 10,
-                Right = 50
+                BottomTolerance = 20,
+                Left = 8,
+                Right = 25,
+                Bottom = 15
             },
         };
     }
@@ -55,5 +72,5 @@ class ScrubSpec
     public int Bottom { get; set; }
     public int Right { get; set; }
     public int Left { get; set; }
-    public int? BorderTolerance { get; set; }
+    public int? BottomTolerance { get; set; }
 }
