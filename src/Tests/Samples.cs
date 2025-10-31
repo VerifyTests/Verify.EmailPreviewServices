@@ -32,18 +32,18 @@ public class Samples
     {
         var devices = await PreviewBuilder.Service.GetDeviceListAsync();
         var stringBuilder = new StringBuilder();
-        foreach (var device in devices)
+        foreach (var device in devices.OrderBy(_=>_.Name))
         {
             var name = device.Name
                 .Replace("Seznam.cz", "Seznam")
                 .Replace("Freenet.de", "Freenet")
                 .Replace("Microsoft Outlook", "Outlook")
                 .Replace(")", "")
-                .Replace(".", "")
                 .Replace("\"", "")
                 .Replace(" ", "")
                 .Replace("(", "")
-                .Replace("Outlook.com", "OutlookWeb");
+                .Replace("Outlook.com", "OutlookWeb")
+                .Replace(".", "");
             stringBuilder.AppendLine(
                 $"""
 

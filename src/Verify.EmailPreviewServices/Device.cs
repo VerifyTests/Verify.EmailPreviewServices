@@ -5,125 +5,17 @@ namespace VerifyTests;
 
 public enum Device
 {
-    [Description("aol_chrome")]
-    AOLChrome,
-
-    [Description("microsoft_outlook_2016")]
-    Outlook2016,
-
-    [Description("iphone8_13")]
-    iPhone8,
-
-    [Description("outlook_chrome")]
-    OutlookcomChrome,
-
-    [Description("zimbra_desktop")]
-    ZimbraDesktop,
-
-    [Description("gmx")]
-    GMX,
-
-    [Description("microsoft_outlook_2010")]
-    Outlook2010,
-
-    [Description("microsoft_outlook_2013")]
-    Outlook2013,
-
-    [Description("outlook_firefox")]
-    OutlookcomFirefox,
-
-    [Description("microsoft_outlook_2007")]
-    Outlook2007,
-
-    [Description("yahoo_chrome")]
-    YahooChrome,
-
-    [Description("outlook_dark_chrome")]
-    OutlookcomDarkModeChrome,
-
-    [Description("gmail_firefox")]
-    GmailFirefox,
-
-    [Description("icloud")]
-    iCloud,
-
-    [Description("yahoo_firefox")]
-    YahooFirefox,
-
-    [Description("mailbird_dark")]
-    Mailbirddark,
-
-    [Description("aol_firefox")]
-    AOLFirefox,
-
-    [Description("o2_pl")]
-    o2pl,
-
-    [Description("em_client")]
-    eMClient,
-
-    [Description("postbox6")]
-    Postbox6,
-
-    [Description("wppl")]
-    WPpl,
-
-    [Description("yahoo_basic")]
-    YahooBasic,
-
-    [Description("mailbird_light")]
-    Mailbirdlight,
+    [Description("android_9")]
+    Android9,
 
     [Description("aol_basic")]
     AOLBasic,
 
-    [Description("iphone_se")]
-    iPhoneSE,
+    [Description("aol_chrome")]
+    AOLChrome,
 
-    [Description("onet_pl")]
-    onetpl,
-
-    [Description("outlook_dark_firefox")]
-    OutlookcomDarkModeFirefox,
-
-    [Description("seznam_cz")]
-    Seznam,
-
-    [Description("thunderbird")]
-    Thunderbird,
-
-    [Description("microsoft_outlook_2016_plain_text")]
-    Outlook2016PlainText,
-
-    [Description("windows_live_mail_2012")]
-    WindowsLiveMail2012,
-
-    [Description("win10mail_light")]
-    Windows10MailLight,
-
-    [Description("win10mail_dark")]
-    Windows10MailDark,
-
-    [Description("microsoft_outlook_2003")]
-    Outlook2003,
-
-    [Description("microsoft_outlook_2019")]
-    Outlook2019,
-
-    [Description("iphone11ios13")]
-    iPhone11,
-
-    [Description("iPad_Air_13")]
-    iPadAir,
-
-    [Description("android_9")]
-    Android9,
-
-    [Description("microsoft_outlook_2019_mac_dark")]
-    Outlook2019MacDark,
-
-    [Description("microsoft_outlook_2019_mac_light")]
-    Outlook2019MacLight,
+    [Description("aol_firefox")]
+    AOLFirefox,
 
     [Description("apple_mail_dark")]
     AppleMailDark,
@@ -131,33 +23,144 @@ public enum Device
     [Description("apple_mail_light")]
     AppleMailLight,
 
-    [Description("zoho_dark")]
-    ZohoDark,
+    [Description("DevTesting")]
+    DevTesting,
 
-    [Description("zoho_light")]
-    ZohoLight,
-
-    [Description("office365_light")]
-    Office365Light,
-
-    [Description("office365_dark")]
-    Office365Dark,
+    [Description("em_client")]
+    eMClient,
 
     [Description("freenetde")]
     Freenet,
 
-    [Description("roundcube_chrome")]
-    RoundcubeChrome,
+    [Description("gmail_firefox")]
+    GmailFirefox,
+
+    [Description("gmx")]
+    GMX,
+
+    [Description("icloud")]
+    iCloud,
+
+    [Description("iPad_Air_13")]
+    iPadAir,
+
+    [Description("iphone11ios13")]
+    iPhone11,
 
     [Description("iPhone12")]
     iPhone12,
 
-    [Description("iPhone13")]
-    iPhone13,
-
     [Description("iPhone12Pro")]
     iPhone12Pro,
 
+    [Description("iPhone13")]
+    iPhone13,
+
     [Description("iPhone13ProMax")]
     iPhone13ProMax,
+
+    [Description("iphone8_13")]
+    iPhone8,
+
+    [Description("iphone_se")]
+    iPhoneSE,
+
+    [Description("mailbird_dark")]
+    Mailbirddark,
+
+    [Description("mailbird_light")]
+    Mailbirdlight,
+
+    [Description("microsoft_outlook_2003")]
+    Outlook2003,
+
+    [Description("microsoft_outlook_2007")]
+    Outlook2007,
+
+    [Description("microsoft_outlook_2010")]
+    Outlook2010,
+
+    [Description("microsoft_outlook_2013")]
+    Outlook2013,
+
+    [Description("microsoft_outlook_2016")]
+    Outlook2016,
+
+    [Description("microsoft_outlook_2016_plain_text")]
+    Outlook2016PlainText,
+
+    [Description("microsoft_outlook_2019")]
+    Outlook2019,
+
+    [Description("microsoft_outlook_2019_mac_dark")]
+    Outlook2019MacDark,
+
+    [Description("microsoft_outlook_2019_mac_light")]
+    Outlook2019MacLight,
+
+    [Description("o2_pl")]
+    o2pl,
+
+    [Description("office365_dark")]
+    Office365Dark,
+
+    [Description("office365_light")]
+    Office365Light,
+
+    [Description("onet_pl")]
+    onetpl,
+
+    [Description("outlook_dark_chrome")]
+    OutlookWebDarkModeChrome,
+
+    [Description("outlook_dark_firefox")]
+    OutlookWebDarkModeFirefox,
+
+    [Description("outlook_chrome")]
+    OutlookWebChrome,
+
+    [Description("outlook_firefox")]
+    OutlookWebFirefox,
+
+    [Description("postbox6")]
+    Postbox6,
+
+    [Description("roundcube_chrome")]
+    RoundcubeChrome,
+
+    [Description("seznam_cz")]
+    Seznam,
+
+    [Description("thunderbird")]
+    Thunderbird,
+
+    [Description("win10mail_dark")]
+    Windows10MailDark,
+
+    [Description("win10mail_light")]
+    Windows10MailLight,
+
+    [Description("windows_live_mail_2012")]
+    WindowsLiveMail2012,
+
+    [Description("wppl")]
+    WPpl,
+
+    [Description("yahoo_basic")]
+    YahooBasic,
+
+    [Description("yahoo_chrome")]
+    YahooChrome,
+
+    [Description("yahoo_firefox")]
+    YahooFirefox,
+
+    [Description("zimbra_desktop")]
+    ZimbraDesktop,
+
+    [Description("zoho_dark")]
+    ZohoDark,
+
+    [Description("zoho_light")]
+    ZohoLight
 }
