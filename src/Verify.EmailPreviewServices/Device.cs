@@ -23,9 +23,6 @@ public enum Device
     [Description("apple_mail_light")]
     AppleMailLight,
 
-    [Description("DevTesting")]
-    DevTesting,
-
     [Description("em_client")]
     eMClient,
 

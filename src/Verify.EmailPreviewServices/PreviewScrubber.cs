@@ -112,9 +112,22 @@
         }
     }
 
-    static bool ColorsMatch(Rgba32 c1, Rgba32 c2, int tolerance) =>
-        Math.Abs(c1.R - c2.R) <= tolerance &&
-        Math.Abs(c1.G - c2.G) <= tolerance &&
-        Math.Abs(c1.B - c2.B) <= tolerance &&
-        Math.Abs(c1.A - c2.A) <= tolerance;
+    static bool ColorsMatch(Rgba32 c1, Rgba32 c2, int tolerance)
+    {
+        if (Math.Abs(c1.R - c2.R) > tolerance)
+        {
+            return false;
+        }
+
+        if (Math.Abs(c1.G - c2.G) > tolerance)
+        {
+            return false;
+        }
+
+        if (Math.Abs(c1.B - c2.B) > tolerance)
+        {
+            return false;
+        }
+        return Math.Abs(c1.A - c2.A) <= tolerance;
+    }
 }

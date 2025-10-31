@@ -189,13 +189,205 @@ static class Devices
                 Right = 347,
                 BottomTolerance = 10,
             },
-            [Device.Outlook2016] = new()
+            [Device.Outlook2003] = new()
             {
-                Top = 220,
+                Top = 166,
                 BottomTolerance = 10,
-                Left = 8,
+                Left = 10,
                 Right = 25,
                 Bottom = 15
+            },
+            [Device.Outlook2007] = new()
+            {
+                Top = 191,
+                BottomTolerance = 90,
+                Left = 10,
+                Right = 25,
+                Bottom = 50
+            },
+            [Device.Outlook2010] = new()
+            {
+                Top = 210,
+                BottomTolerance = 40,
+                Left = 10,
+                Right = 25,
+                Bottom = 50
+            },
+            [Device.Outlook2013] = new()
+            {
+                Top = 270,
+                BottomTolerance = 10,
+                Left = 9,
+                Right = 29,
+                Bottom = 13
+            },
+            [Device.Outlook2016] = new()
+            {
+                Top = 228,
+                BottomTolerance = 10,
+                Left = 9,
+                Right = 29,
+                Bottom = 13
+            },
+            [Device.Outlook2016PlainText] = new()
+            {
+                Top = 228,
+                BottomTolerance = 10,
+                Left = 9,
+                Right = 29,
+                Bottom = 13
+            },
+            [Device.Outlook2019] = new()
+            {
+                Top = 228,
+                BottomTolerance = 5,
+                Left = 9,
+                Right = 29,
+                Bottom = 13
+            },
+            [Device.OutlookWebChrome] = new()
+            {
+                Top = 255,
+                BottomTolerance = 5,
+                Left = 275,
+                Right = 186,
+                Bottom = 13
+            },
+            [Device.OutlookWebDarkModeChrome] = new()
+            {
+                Top = 255,
+                BottomTolerance = 5,
+                Left = 314,
+                Right = 186,
+                Bottom = 13
+            },
+            [Device.OutlookWebDarkModeFirefox] = new()
+            {
+                Top = 255,
+                BottomTolerance = 5,
+                Left = 314,
+                Right = 186,
+                Bottom = 13
+            },
+            [Device.OutlookWebFirefox] = new()
+            {
+                Top = 255,
+                BottomTolerance = 5,
+                Left = 275,
+                Right = 186,
+                Bottom = 13
+            },
+            [Device.Postbox6] = new()
+            {
+                Top = 149,
+                BottomTolerance = 10,
+                Left = 0,
+                Right = 0,
+                Bottom = 0
+            },
+            [Device.RoundcubeChrome] = new()
+            {
+                Top = 196,
+                BottomTolerance = 10,
+                Left = 657,
+                Right = 21,
+                Bottom = 23
+            },
+            [Device.Seznam] = new()
+            {
+                Top = 248,
+                BottomTolerance = 10,
+                Left = 283,
+                Right = 21,
+                Bottom = 23
+            },
+            [Device.Thunderbird] = new()
+            {
+                Top = 128,
+                BottomTolerance = 20,
+                Left = 5,
+                Right = 5,
+                Bottom = 25
+            },
+            [Device.Windows10MailDark] = new()
+            {
+                Top = 177,
+                BottomTolerance = 20,
+                Left = 5,
+                Right = 5,
+                Bottom = 25
+            },
+            [Device.Windows10MailLight] = new()
+            {
+                Top = 177,
+                BottomTolerance = 20,
+                Left = 5,
+                Right = 5,
+                Bottom = 25
+            },
+            [Device.WindowsLiveMail2012] = new()
+            {
+                Top = 112,
+                BottomTolerance = 20,
+                Left = 0,
+                Right = 20,
+                Bottom = 30
+            },
+            [Device.WPpl] = new()
+            {
+                Top = 370,
+                BottomTolerance = 20,
+                Left = 260,
+                Right = 365,
+                Bottom = 30
+            },
+            [Device.YahooBasic] = new()
+            {
+                Top = 247,
+                BottomTolerance = 20,
+                Left = 224,
+                Right = 318,
+                Bottom = 30
+            },
+            [Device.YahooChrome] = new()
+            {
+                Top = 314,
+                BottomTolerance = 20,
+                Left = 156,
+                Right = 404,
+                Bottom = 160
+            },
+            [Device.YahooFirefox] = new()
+            {
+                Top = 278,
+                BottomTolerance = 30,
+                Left = 200,
+                Right = 350,
+                Bottom = 10
+            },
+            [Device.ZimbraDesktop] = new()
+            {
+                Top = 228,
+                BottomTolerance = 30,
+                Left = 180,
+                Right = 0,
+                Bottom = 10
+            },
+            [Device.ZohoDark] = new()
+            {
+                Top = 235,
+                BottomTolerance = 30,
+                Left = 266,
+                Right = 49,
+                Bottom = 60
+            },
+            [Device.ZohoLight] = new()
+            {
+                Top = 235,
+                BottomTolerance = 30,
+                Left = 266,
+                Right = 49,
+                Bottom = 60
             },
         };
     }
