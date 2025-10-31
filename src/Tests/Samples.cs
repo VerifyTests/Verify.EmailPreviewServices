@@ -63,17 +63,20 @@ public class Samples
         await Verify(devices);
     }
 
-    // [Test]
-    // [Explicit]
-    // public async Task GenerateAll([Values] Device device)
-    // {
-    //     var preview = new EmailPreview
-    //     {
-    //         Html = html,
-    //         Devices = [device]
-    //     };
-    //     await Verify(preview);
-    // }
+    [Test]
+    [Explicit]
+    public async Task GenerateAll([Values(Device.AppleMailDark,
+            Device.Windows10MailLight,
+            Device.WPpl)]
+        Device device)
+    {
+        var preview = new EmailPreview
+        {
+            Html = html,
+            Devices = [device]
+        };
+        await Verify(preview);
+    }
 
     [Test]
     [Explicit]
@@ -82,7 +85,7 @@ public class Samples
         var preview = new EmailPreview
         {
             Html = html,
-            Devices = [Device.Outlook2016, Device.iPhone12Pro]
+            Devices = [Device.AppleMailDark]
         };
         await Verify(preview);
     }

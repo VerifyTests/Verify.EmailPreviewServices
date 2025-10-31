@@ -3,31 +3,31 @@
     public static async Task<Stream> Scrub(Stream stream, Device device)
     {
         var memoryStream = new MemoryStream();
-        var srubber = GetSrubber(device);
-        if (srubber == null)
+        if (Devices.ScrubForDeivce(device, out var spec))
         {
-            await stream.CopyToAsync(memoryStream);
+            using var image = await Image.LoadAsync<Rgba32>(stream);
+            Crop(image, spec);
+                ScrubBottom(image, spec.Background);
+
+            await image.SaveAsPngAsync(memoryStream);
         }
         else
         {
-            using var image = await Image.LoadAsync<Rgba32>(stream);
-            srubber(image);
-            await image.SaveAsPngAsync(memoryStream);
+            await stream.CopyToAsync(memoryStream);
         }
 
         memoryStream.Position = 0;
         return memoryStream;
     }
 
-    static Action<Image<Rgba32>>? GetSrubber(Device device) =>
-        device switch
-        {
-            //Device.Outlook2016 => ScrubOutlook2016,
-            _ => null
-        };
-
-    static void ScrubOutlook2016(Image<Rgba32> image)
+    static void ScrubBottom(Image<Rgba32> image, int? color)
     {
+        if (color == null)
+        {
+            return;
+        }
+
+        var colorValue = color.Value;
         var cropHeight = image.Height;
         var width = image.Width;
         for (var y = image.Height - 1; y >= 0; y--)
@@ -36,7 +36,7 @@
             for (var x = 0; x < width; x++)
             {
                 var pixel = image[x, y];
-                if (pixel.R < 240 || pixel.G < 240 || pixel.B < 240)
+                if (pixel.R < colorValue || pixel.G < colorValue || pixel.B < colorValue)
                 {
                     hasContent = true;
                     break;
@@ -50,9 +50,14 @@
             }
         }
 
-        var topCrop = 220;
-        var newHeight = cropHeight - topCrop;
-
-        image.Mutate(ctx => ctx.Crop(new(0, topCrop, width, newHeight)));
+        image.Mutate(_ => _.Crop(new(0, 0, width, cropHeight)));
     }
+
+    static void Crop(Image<Rgba32> image, ScrubSpec spec) =>
+        image.Mutate(x => x.Crop(new(
+            spec.Left,
+            spec.Top,
+            image.Width - spec.Left - spec.Right,
+            image.Height - spec.Top
+        )));
 }

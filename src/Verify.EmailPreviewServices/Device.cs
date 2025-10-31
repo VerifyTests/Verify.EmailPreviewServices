@@ -160,7 +160,4 @@ public enum Device
 
     [Description("iPhone13ProMax")]
     iPhone13ProMax,
-
-    [Description("DevTesting")]
-    DevTesting,
 }
