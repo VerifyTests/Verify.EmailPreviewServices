@@ -23,6 +23,6 @@ public class Scrubbing
     {
         var fileStream = File.OpenRead(Path.Combine(path, $"{device}.jpg"));
         var scrubbed = await PreviewScrubber.Scrub(fileStream, device);
-        await Verify(scrubbed, extension: "png");
+        await Verify(scrubbed, extension: "jpg");
     }
 }
