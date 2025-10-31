@@ -1,8 +1,8 @@
-[Documentation](https://github.com/VerifyTests/Verify.Ulid)
+[Documentation](https://github.com/VerifyTests/Verify.EmailPreviewServices )
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewServices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
-**See [Milestones](https://github.com/VerifyTests/Verify.Ulid/milestones?state=closed) for release notes.**
+**See [Milestones](https://github.com/VerifyTests/Verify.EmailPreviewServices /milestones?state=closed) for release notes.**
 
 
 ## Sponsors
