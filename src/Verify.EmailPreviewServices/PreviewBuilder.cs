@@ -33,7 +33,7 @@
             await using var httpStream = await HttpClient.GetStreamAsync(devicePreview.Preview.Original);
             var device = Devices.DeviceForKey(devicePreview.DeviceKey);
             var memoryStream = await PreviewScrubber.Scrub(httpStream, device);
-            targets.Add(new("png", memoryStream, device.ToString()));
+            targets.Add(new("jpg", memoryStream, device.ToString()));
         }
 
         await Service.DeletePreviewAsync(preview.Id);

@@ -9,7 +9,7 @@
             Crop(image, spec);
             RemoveBottom(image, spec.BottomTolerance);
 
-            await image.SaveAsPngAsync(memoryStream);
+            await image.SaveAsJpegAsync(memoryStream);
         }
         else
         {

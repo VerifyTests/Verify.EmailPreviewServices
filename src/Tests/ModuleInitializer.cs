@@ -13,6 +13,6 @@
     {
         VerifyDiffPlex.Initialize(OutputType.Compact);
         VerifierSettings.InitializePlugins();
-       // VerifyImageMagick.RegisterComparers(.01);
+        VerifyImageMagick.RegisterComparers(.01);
     }
 }

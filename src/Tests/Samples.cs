@@ -82,7 +82,11 @@ public class Samples
         var preview = new EmailPreview
         {
             Html = html,
-            Devices = [Device.WPpl]
+            Devices =
+                [
+                    Device.Outlook2019,
+                    Device.iPhone13
+                ]
         };
         await Verify(preview);
     }
