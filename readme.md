@@ -61,7 +61,36 @@ public static void Init() =>
 
 Assume the code under test produces the following html email.
 
-snippet: html
+<!-- snippet: html -->
+<a id='snippet-html'></a>
+```cs
+static string html =
+    """
+    <!DOCTYPE html>
+    <html>
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Test Email</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+       <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px;">
+           <h1 style="color: #333;">Welcome to Our Service!</h1>
+           <p style="color: #666; line-height: 1.6;">
+               This is a test email to demonstrate the email preview functionality.
+           </p>
+           <a href="https://"
+              style="display: inline-block; padding: 10px 20px; background-color: #007bff;
+                     color: white; text-decoration: none; border-radius: 5px; margin-top: 10px;">
+               Get Started
+           </a>
+       </div>
+    </body>
+    </html>
+    """;
+```
+<sup><a href='/src/Tests/Samples.cs#L4-L31' title='Snippet source file'>snippet source</a> | <a href='#snippet-html' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
 
 
 ## Generating previews
@@ -78,20 +107,26 @@ public async Task GeneratePreview()
         Html = html,
         Devices =
             [
-                Device.Outlook2019,
+                Device.OutlookWebDarkModeChrome,
+                Device.iPhone13
             ]
     };
     await Verify(preview);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L78-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L82-L100' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-Result:
 
-<img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp" height="100px">
+### Result
 
-<img src="/src/Tests/Samples.GeneratePreview%23Outlook2019.verified.webp" height="100px">
+For OutlookWebDarkModeChrome:
+
+<img src="/src/Tests/Samples.GeneratePreview%23OutlookWebDarkModeChrome.verified.webp" height="200px">
+
+For Android9:
+
+<img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp" height="200px">
 
 
 ## Performance

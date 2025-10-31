@@ -90,7 +90,7 @@ public class Samples
             Html = html,
             Devices =
                 [
-                    Device.Outlook2019,
+                    Device.OutlookWebDarkModeChrome,
                     Device.iPhone13
                 ]
         };
