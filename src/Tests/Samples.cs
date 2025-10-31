@@ -86,17 +86,4 @@ public class Samples
         };
         await Verify(preview);
     }
-    [Test]
-    [Explicit]
-    public async Task ScrubTesting()
-    {
-        var project = AttributeReader.GetProjectDirectory();
-        Path.Combine(project)
-        var preview = new EmailPreview
-        {
-            Html = html,
-            Devices = [Device.Outlook2016, Device.iPhone12Pro]
-        };
-        await Verify(preview);
-    }
 }

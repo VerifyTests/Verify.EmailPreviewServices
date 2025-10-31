@@ -3,22 +3,16 @@ public class Scrubbing
 {
     [Test]
     [Explicit]
-    public async Task ScrubTesting()
+    public void ScrubTesting()
     {
         var project = AttributeReader.GetProjectDirectory();
         var path = Path.Combine(project,"Scrubbing");
-        foreach (var file in Directory.EnumerateFiles("*.png"))
+        foreach (var file in Directory.EnumerateFiles(path, "*.png"))
         {
             var fileName = Path.GetFileName(file);
-            fileName = fileName.Split('#')[1];
-            File.Move(file,);
-            var enumerateFiles =
-                var preview = new EmailPreview
-            {
-                Html = html,
-                Devices = [Device.Outlook2016, Device.iPhone12Pro]
-            };
-            await Verify(preview);
+            fileName = fileName.Split('#')[1].Replace(".verified","");
+            var destFileName = Path.Combine(path, fileName);
+            File.Move(file,destFileName);
         }
     }
 }
