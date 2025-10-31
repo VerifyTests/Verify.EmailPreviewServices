@@ -1,1 +1,1 @@
-Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewDervices](https://emailpreviewservices.com).
+Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewServices](https://emailpreviewservices.com).
