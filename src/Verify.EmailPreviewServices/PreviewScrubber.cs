@@ -2,24 +2,27 @@
 {
     public static async Task<Stream> Scrub(Stream stream, Device device)
     {
+        var memoryStream = new MemoryStream();
         var srubber = GetSrubber(device);
         if (srubber == null)
         {
-            return stream;
+            await stream.CopyToAsync(memoryStream);
         }
-        using var image = await Image.LoadAsync<Rgba32>(stream);
-        srubber(image);
-        var memoryStream = new MemoryStream();
-        await image.SaveAsPngAsync(memoryStream);
+        else
+        {
+            using var image = await Image.LoadAsync<Rgba32>(stream);
+            srubber(image);
+            await image.SaveAsPngAsync(memoryStream);
+        }
+
         memoryStream.Position = 0;
-        await stream.DisposeAsync();
         return memoryStream;
     }
 
     static Action<Image<Rgba32>>? GetSrubber(Device device) =>
         device switch
         {
-            Device.Outlook2016 => ScrubOutlook2016,
+            //Device.Outlook2016 => ScrubOutlook2016,
             _ => null
         };
 

@@ -8,6 +8,7 @@
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit3TestAdapter" />
     <PackageReference Include="Verify.DiffPlex" />
+    <PackageReference Include="Verify.Http" />
     <PackageReference Include="Verify.ImageMagick" />
     <PackageReference Include="Verify.NUnit" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />

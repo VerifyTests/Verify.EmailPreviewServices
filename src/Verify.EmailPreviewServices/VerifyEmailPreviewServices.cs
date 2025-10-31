@@ -4,7 +4,6 @@ public static class VerifyEmailPreviewServices
 {
     public static bool Initialized { get; private set; }
 
-
     public static void Initialize(string? apiKey = null)
     {
         if (Initialized)
@@ -15,7 +14,8 @@ public static class VerifyEmailPreviewServices
         Initialized = true;
         VerifyEmailPreviewServices.apiKey = apiKey;
         InnerVerifier.ThrowIfVerifyHasBeenRun();
-        VerifierSettings.RegisterFileConverter<EmailPreview>((instance, _) => PreviewBuilder.Convert(instance));
+        VerifierSettings.RegisterFileConverter<EmailPreview>(
+            (instance, _) => PreviewBuilder.Convert(instance));
     }
 
     static string? apiKey;
