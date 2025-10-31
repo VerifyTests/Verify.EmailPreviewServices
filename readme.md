@@ -8,7 +8,7 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting o
 
 The purpose of this project is provide faster feedback when using code to generate html emails.
 
-[EmailPreviewServices is a paid service](https://emailpreviewservices.com/en/pricing), and a account is required to get an API key.
+[EmailPreviewServices is a paid service](https://emailpreviewservices.com/en/pricing), an account is required to get an API key.
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
@@ -42,7 +42,7 @@ public static void Init() =>
 <sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-Initialize' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-The default behavior is to use an environment variable named `EmailPreviewServicesApiKey` as the API key.
+The default behavior is to use an environment variable named `EmailPreviewServicesApiKey` for the API key.
 
 An explicit API key can be used:
 
@@ -135,6 +135,8 @@ Generating previews takes in the range of tens of seconds. The time take can var
 
  * Generating a a single device (GmailFirefox) takes ~20sec.
  * Generating previews for 5 devices (OutlookWebChrome, Outlook2019, Outlook2016, iPhone13, and GmailFirefox) takes ~25sec.
+
+**While this may seem slow compared to other tests, it is orders of magnitude faster than having to test previews manually. It is also less error prone than manual testing**
 
 Execution will timeout after 6min and throw an exception.
 
