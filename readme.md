@@ -89,9 +89,9 @@ public async Task GeneratePreview()
 
 Result:
 
-<img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp">
+<img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp" height="100px">
 
-<img src="/src/Tests/Samples.GeneratePreview%23Outlook2019.verified.webp">
+<img src="/src/Tests/Samples.GeneratePreview%23Outlook2019.verified.webp" height="100px">
 
 
 ## Performance
