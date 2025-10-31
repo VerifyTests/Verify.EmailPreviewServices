@@ -77,11 +77,12 @@
 
         var toleranceValue = tolerance.Value;
         // Detect border color from bottom middle pixel
-        var borderColor = image[image.Width / 2, image.Height - 1];
+        var height = image.Height;
+        var borderColor = image[image.Width / 2, height - 1];
 
-        var bottom = image.Height - 1;
+        var bottom = height - 1;
 
-        for (var y = image.Height - 1; y >= 0; y--)
+        for (var y = height - 1; y >= 0; y -= 15)
         {
             var hasContent = false;
             for (var x = 0; x < image.Width; x++)
@@ -100,12 +101,12 @@
             }
         }
 
-        if (bottom + 25 < image.Height)
+        if (bottom + 25 < height)
         {
             bottom += 25;
         }
         // Crop to content bounds
-        if (bottom < image.Height)
+        if (bottom < height)
         {
             image.Mutate(_ =>
                 _.Crop(new(
