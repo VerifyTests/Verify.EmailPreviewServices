@@ -1,18 +1,18 @@
 ﻿[TestFixture]
 public class Scrubbing
 {
-    [Test]
-    [Explicit]
-    public void ScrubTesting()
+    static readonly string path;
+
+    static Scrubbing()
     {
         var project = AttributeReader.GetProjectDirectory();
-        var path = Path.Combine(project,"Scrubbing");
-        foreach (var file in Directory.EnumerateFiles(path, "*.png"))
-        {
-            var fileName = Path.GetFileName(file);
-            fileName = fileName.Split('#')[1].Replace(".verified","");
-            var destFileName = Path.Combine(path, fileName);
-            File.Move(file,destFileName);
-        }
+        path = Path.Combine(project, "Scrubbing");
+    }
+
+    [Test]
+    public async Task ScrubTesting([Values] Device device)
+    {
+        var fileStream = File.OpenRead(Path.Combine(path, $"{device}.png"));
+        await Verify(fileStream, extension: "png");
     }
 }
