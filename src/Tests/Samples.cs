@@ -1,6 +1,8 @@
 ﻿[TestFixture]
 public class Samples
 {
+    #region html
+
     static string html =
         """
         <!DOCTYPE html>
@@ -26,13 +28,15 @@ public class Samples
         </html>
         """;
 
+    #endregion
+
     [Test]
     [Explicit]
     public async Task BuildDeviceEnum()
     {
         var devices = await Builder.Service.GetDeviceListAsync();
         var stringBuilder = new StringBuilder();
-        foreach (var device in devices.OrderBy(_=>_.Name))
+        foreach (var device in devices.OrderBy(_ => _.Name))
         {
             var name = device.Name
                 .Replace("Seznam.cz", "Seznam")
@@ -75,6 +79,8 @@ public class Samples
         await Verify(preview);
     }
 
+    #region sample
+
     [Test]
     [Explicit]
     public async Task GeneratePreview()
@@ -90,4 +96,6 @@ public class Samples
         };
         await Verify(preview);
     }
+
+    #endregion
 }

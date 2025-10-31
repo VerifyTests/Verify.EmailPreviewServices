@@ -68,11 +68,11 @@
 
     static async Task GetDevicePreviews(EmailPreviewData preview)
     {
-        const int maxAttempts = 50;
+        const int maxAttempts = 360;
 
-        await Task.Delay(1000);
         for (var i = 0; i < maxAttempts; i++)
         {
+            await Task.Delay(1000);
             var previews = await Service.GetPreviewAsync(preview.Id);
 
             var failed = previews.Previews.SingleOrDefault(_ => _.Status == DevicePreviewDataStatus.FAILED);
@@ -85,21 +85,19 @@
             {
                 return;
             }
-
-            await BackoffDelay(i);
         }
 
         throw new("Timed out");
     }
 
-    static Task BackoffDelay(int attempt)
-    {
-        const double multiplier = 1.5;
-        const int maxDelaySeconds = 8;
-
-        var exponentialDelay = Math.Pow(multiplier, attempt);
-        var cappedDelay = Math.Min(exponentialDelay, maxDelaySeconds);
-
-        return Task.Delay(TimeSpan.FromSeconds(cappedDelay));
-    }
+    // static Task BackoffDelay(int attempt)
+    // {
+    //     const double multiplier = 1.5;
+    //     const int maxDelaySeconds = 8;
+    //
+    //     var exponentialDelay = Math.Pow(multiplier, attempt);
+    //     var cappedDelay = Math.Min(exponentialDelay, maxDelaySeconds);
+    //
+    //     return Task.Delay(TimeSpan.FromSeconds(cappedDelay));
+    // }
 }

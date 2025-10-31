@@ -6,6 +6,10 @@
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewServices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
+The purpose of this project is provide faster feedback when using code to generate html emails.
+
+[EmailPreviewServices is a paid service](https://emailpreviewservices.com/en/pricing), and a account is required to get an API key.
+
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
 
@@ -38,9 +42,9 @@ public static void Init() =>
 <sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-Initialize' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
-The default behavior is to use an environment variable named `EmailPreviewServicesApiKey` as the api key.
+The default behavior is to use an environment variable named `EmailPreviewServicesApiKey` as the API key.
 
-An explicit api key can be used:
+An explicit API key can be used:
 
 <!-- snippet: InitializeWithKey -->
 <a id='snippet-InitializeWithKey'></a>
@@ -51,6 +55,13 @@ public static void Init() =>
 ```
 <sup><a href='/src/Tests/ModuleInitializer.cs#L12-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-InitializeWithKey' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
+
+
+## Sample html
+
+Assume the code under test produces the following html email.
+
+snippet: html
 
 
 ## Generating previews
@@ -67,7 +78,7 @@ public async Task GeneratePreview()
         Html = html,
         Devices =
             [
-                Device.Outlook2016,
+                Device.Outlook2019,
             ]
     };
     await Verify(preview);
@@ -85,11 +96,20 @@ Result:
 
 ## Performance
 
-Generating previews takes in the range of tens of seconds. The time take can vary based on the number and type of email devices selected. For example generating previews for 5 devices (OutlookWebChrome, Outlook2019, Outlook2016, iPhone13, and GmailFirefox) takes ~30sec.
+Generating previews takes in the range of tens of seconds. The time take can vary based on the number and type of email devices selected. For example:
 
-Execution will timeout after ~6.5min and throw an exception.
+ * Generating a a single device (GmailFirefox) takes ~20sec.
+ * Generating previews for 5 devices (OutlookWebChrome, Outlook2019, Outlook2016, iPhone13, and GmailFirefox) takes ~25sec.
 
-Splitting individual or groups of devices over multiple tests can be used to have more control of when previews are generated and getting faster feedback.
+Execution will timeout after 6min and throw an exception.
+
+Splitting individual devices, or groups of devices, over multiple tests can be used to have more control of when previews are generated and achieve faster feedback.
+
+
+## When to run tests
+
+Tests that execute in the 10s of seconds range can significantly slow down a test run. As such it is recomended that email preview tests are configured to be explicit in `Debug` mode.
+
 
 
 ## Icon
