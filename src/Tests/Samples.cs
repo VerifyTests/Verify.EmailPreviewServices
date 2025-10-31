@@ -15,11 +15,33 @@ public class Samples
 
     [Test]
     [Explicit]
-    public async Task DeviceList()
+    public async Task BuildDeviceEnum()
     {
         var devices = await service.GetDeviceListAsync();
-        await Verify(devices);
+        var stringBuilder = new StringBuilder();
+        foreach (var device in devices)
+        {
+            var name = device.Name
+                .Replace("Seznam.cz", "Seznam")
+                .Replace("Freenet.de", "Freenet")
+                .Replace("Microsoft Outlook", "Outlook")
+                .Replace(")", "")
+                .Replace(".", "")
+                .Replace("\"", "")
+                .Replace(" ", "")
+                .Replace("(", "")
+                .Replace("Outlook.com", "OutlookWeb");
+            stringBuilder.AppendLine(
+                $"""
+
+                 [Description("{device.DeviceKey}")]
+                 {name},
+                 """);
+        }
+
+        await Verify(stringBuilder);
     }
+
     [Test]
     [Explicit]
     public async Task EmailList()
@@ -62,7 +84,11 @@ public class Samples
         var preview = new EmailPreview
         {
             Html = html,
-            Devices = [Device.Outlook2016]
+            Devices =
+            [
+                Device.Outlook2016,
+                Device.Outlook2019
+            ]
         };
         await Verify(preview);
     }

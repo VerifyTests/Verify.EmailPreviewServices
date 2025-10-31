@@ -34,8 +34,3 @@ public static class VerifyEmailPreviewServices
         }
     }
 }
-
-public enum Device
-{
-    Outlook2016
-}
