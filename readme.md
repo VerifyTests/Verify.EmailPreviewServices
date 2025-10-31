@@ -1,7 +1,7 @@
 # <img src="/src/icon.png" height="30px"> Verify.EmailPreviewServices
 
 [![Discussions](https://img.shields.io/badge/Verify-Discussions-yellow?svg=true&label=)](https://github.com/orgs/VerifyTests/discussions)
-[![Build status](https://ci.appveyor.com/api/projects/status/soell7l73pbakm8u?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
+[![Build status](https://ci.appveyor.com/api/projects/status/nwvywmfs2xb4tpsd?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.EmailPreviewServices.svg)](https://www.nuget.org/packages/Verify.EmailPreviewServices/)
 
 Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewDervices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->

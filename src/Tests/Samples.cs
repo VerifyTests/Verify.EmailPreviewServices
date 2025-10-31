@@ -1,22 +1,16 @@
-﻿using EmailPreviewServices;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
-
-[TestFixture]
+﻿[TestFixture]
 public class Samples
 {
-    static readonly HttpClient httpClient;
     static readonly EmailPreviewServicesClient service;
 
     static Samples()
     {
-        var apiKey = Environment.GetEnvironmentVariable("EmailPreviewServicesApiKey")!;
-        httpClient = new HttpClient();
-        httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
-        httpClient.DefaultRequestHeaders.Authorization = new("Bearer", apiKey);
-        httpClient.DefaultRequestHeaders.Accept.Add(new("application/json"));
-        service = new("https://app.emailpreviewservices.com/api", httpClient);
+        var apiKey = VerifyEmailPreviewServices.ApiKey;
+        HttpClient client = new();
+        client.DefaultRequestHeaders.Add("X-API-Key", apiKey);
+        client.DefaultRequestHeaders.Authorization = new("Bearer", apiKey);
+        client.DefaultRequestHeaders.Accept.Add(new("application/json"));
+        service = new("https://app.emailpreviewservices.com/api", client);
     }
 
     [Test]
@@ -27,8 +21,7 @@ public class Samples
     }
 
     [Test]
-    [Explicit]
-    public async Task Simple()
+    public async Task GeneratePreviews()
     {
         var html =
             """
@@ -57,63 +50,11 @@ public class Samples
             </body>
             </html>
             """;
-
-        var preview = await service.ExecutePreviewAsync(
-            new()
-            {
-                Name = "the name",
-                Body = html,
-                Subject = "subhect",
-                Devices = ["microsoft_outlook_2016"],
-            });
-        const int maxAttempts = 30;
-        var delay = TimeSpan.FromSeconds(2);
-
-        Stream streamAsync = null!;
-        for (var i = 0; i < maxAttempts; i++)
+        var preview = new EmailPreview
         {
-            var devicesPreview = await service.GetDevicePreviewAsync(preview.Id, "microsoft_outlook_2016");
-
-            if (devicesPreview.Status == DevicePreviewDataStatus.SUCCESSFUL)
-            {
-                streamAsync = await httpClient.GetStreamAsync(devicesPreview.Preview.Original);
-                break;
-            }
-
-            await Task.Delay(delay);
-        }
-
-
-        using var image =await Image.LoadAsync<Rgba32>(streamAsync);
-
-        var cropHeight = image.Height;
-        for (var y = image.Height - 1; y >= 0; y--)
-        {
-            var hasContent = false;
-            for (var x = 0; x < image.Width; x++)
-            {
-                var pixel = image[x, y];
-                if (pixel.R < 240 || pixel.G < 240 || pixel.B < 240)
-                {
-                    hasContent = true;
-                    break;
-                }
-            }
-            if (hasContent)
-            {
-                cropHeight = y + 1;
-                break;
-            }
-        }
-
-        image.Mutate(ctx => ctx.Crop(image.Width, cropHeight));
-        var memoryStream = new MemoryStream();
-        await image.SaveAsPngAsync(memoryStream);
-        memoryStream.Position = 0;
-        await service.DeletePreviewAsync(preview.Id);
-        await Verify(memoryStream, extension: "png");
-        // await using var streamAsync = await httpClient.GetStreamAsync(preview.Body);
-        // await using var fileStream = File.Create("temp.html");
-        // await streamAsync.CopyToAsync(fileStream);
+            Html = html,
+            Devices = [Device.Outlook2016]
+        };
+        await Verify(preview);
     }
 }

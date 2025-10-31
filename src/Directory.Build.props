@@ -2,11 +2,11 @@
 <Project>
   <PropertyGroup>
     <NoWarn>CS1591;CS0649;NU1608;NU1109</NoWarn>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
     <LangVersion>preview</LangVersion>
-    <PackageTags>Ulid, Verify</PackageTags>
-    <Description>Extends Verify (https://github.com/VerifyTests/Verify) to enable scrubbing of Universally Unique Lexicographically Sortable Identifiers via Ulid (https://github.com/Cysharp/Ulid).</Description>
+    <PackageTags>Email, Preview, Verify</PackageTags>
+    <Description>Extends Verify (https://github.com/VerifyTests/Verify) to enable snapshotting of emails via Email Preview Services (https://emailpreviewservices.com).</Description>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>

@@ -6,9 +6,8 @@
     <PackageReference Include="Polyfill" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Verify" />
+    <PackageReference Include="SixLabors.ImageSharp" />
     <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\Swagger\EmailPreviewServicesClient.cs">
       <Link>EmailPreviewServicesClient.cs</Link>
     </Compile>
