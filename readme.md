@@ -108,8 +108,25 @@ Splitting individual devices, or groups of devices, over multiple tests can be u
 
 ## When to run tests
 
-Tests that execute in the 10s of seconds range can significantly slow down a test run. As such it is recomended that email preview tests are configured to be explicit in `Debug` mode.
+Tests that execute in the 10s of seconds range can significantly slow down a test run. As such it is recommended that email preview tests are configured to be explicit in `Debug` mode.
 
+```cs
+[Test]
+#if DEBUG
+[Explicit]
+#endif
+public async Task GeneratePreview()
+{
+    var preview = new EmailPreview
+    {
+        Html = html,
+        Devices = [Device.Outlook2019]
+    };
+    await Verify(preview);
+}
+```
+
+This way developer can opt in to manually run specific previews, and on the build server previews test will allways be executed.
 
 
 ## Icon
