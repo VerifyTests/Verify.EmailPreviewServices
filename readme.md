@@ -24,7 +24,72 @@ Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting o
  * https://nuget.org/packages/Verify.EmailPreviewServices
 
 
-## Usage
+## Setup
+
+Call `VerifyEmailPreviewServices.Initialize` at test startup.
+
+<!-- snippet: Initialize -->
+<a id='snippet-Initialize'></a>
+```cs
+[ModuleInitializer]
+public static void Init() =>
+    VerifyEmailPreviewServices.Initialize();
+```
+<sup><a href='/src/Tests/ModuleInitializer.cs#L3-L9' title='Snippet source file'>snippet source</a> | <a href='#snippet-Initialize' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+The default behavior is to use an environment variable named `EmailPreviewServicesApiKey` as the api key.
+
+An explicit api key can be used:
+
+<!-- snippet: InitializeWithKey -->
+<a id='snippet-InitializeWithKey'></a>
+```cs
+[ModuleInitializer]
+public static void Init() =>
+    VerifyEmailPreviewServices.Initialize("ApiKey");
+```
+<sup><a href='/src/Tests/ModuleInitializer.cs#L12-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-InitializeWithKey' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+
+## Generating previews
+
+<!-- snippet: sample -->
+<a id='snippet-sample'></a>
+```cs
+[Test]
+[Explicit]
+public async Task GeneratePreview()
+{
+    var preview = new EmailPreview
+    {
+        Html = html,
+        Devices =
+            [
+                Device.Outlook2016,
+            ]
+    };
+    await Verify(preview);
+}
+```
+<sup><a href='/src/Tests/Samples.cs#L78-L95' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
+<!-- endSnippet -->
+
+Result:
+
+<img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp">
+
+<img src="/src/Tests/Samples.GeneratePreview%23Outlook2019.verified.webp">
+
+
+## Performance
+
+Generating previews takes in the range of tens of seconds. The time take can vary based on the number and type of email devices selected. For example generating previews for 5 devices (OutlookWebChrome, Outlook2019, Outlook2016, iPhone13, and GmailFirefox) takes ~30sec.
+
+Execution will timeout after ~6.5min and throw an exception.
+
+Splitting individual or groups of devices over multiple tests can be used to have more control of when previews are generated and getting faster feedback.
 
 
 ## Icon

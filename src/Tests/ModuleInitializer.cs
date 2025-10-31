@@ -8,6 +8,15 @@
 
     #endregion
 
+/**
+    #region InitializeWithKey
+
+    [ModuleInitializer]
+    public static void Init() =>
+        VerifyEmailPreviewServices.Initialize("ApiKey");
+
+    #endregion
+**/
     [ModuleInitializer]
     public static void InitOther()
     {
