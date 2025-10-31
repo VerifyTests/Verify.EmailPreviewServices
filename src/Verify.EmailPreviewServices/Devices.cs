@@ -40,15 +40,15 @@ static class Devices
             [Device.AOLChrome] = new()
             {
                 Top = 250,
-                Bottom = 0,
-                Left = 222,
-                Right = 355,
+                Bottom = 50,
+                Left = 225,
+                Right = 360,
                 BottomTolerance = 10,
             },
             [Device.Outlook2016] = new()
             {
                 Top = 220,
-                BottomTolerance = 20,
+                BottomTolerance = 10,
                 Left = 8,
                 Right = 25,
                 Bottom = 15

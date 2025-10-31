@@ -53,13 +53,20 @@
         image.Mutate(_ => _.Crop(new(0, 0, width, cropHeight)));
     }
 
-    static void Crop(Image<Rgba32> image, ScrubSpec spec) =>
+    static void Crop(Image<Rgba32> image, ScrubSpec spec)
+    {
+        if (spec is {Left: 0, Bottom: 0, Left: 0, Right: 0})
+        {
+            return;
+        }
+
         image.Mutate(x => x.Crop(new(
             spec.Left,
             spec.Top,
             image.Width - spec.Left - spec.Right,
-            image.Height - spec.Top- spec.Bottom
+            image.Height - spec.Top - spec.Bottom
         )));
+    }
 
     static void RemoveBottom(Image<Rgba32> image, int? tolerance)
     {
@@ -69,8 +76,8 @@
         }
 
         var toleranceValue = tolerance.Value;
-        // Detect border color from corner pixel
-        var borderColor = image[0, 0];
+        // Detect border color from bottom middle pixel
+        var borderColor = image[image.Width/2, image.Height-1];
 
         var bottom = image.Height - 1;
 
