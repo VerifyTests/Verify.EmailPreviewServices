@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/nwvywmfs2xb4tpsd?svg=true)](https://ci.appveyor.com/project/SimonCropp/Verify-Ulid)
 [![NuGet Status](https://img.shields.io/nuget/v/Verify.EmailPreviewServices.svg)](https://www.nuget.org/packages/Verify.EmailPreviewServices/)
 
-Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewServices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
+Extends [Verify](https://github.com/VerifyTests/Verify) to enable snapshotting of emails via [EmailPreviewDervices](https://emailpreviewservices.com).<!-- singleLineInclude: intro. path: /docs/intro.include.md -->
 
 **See [Milestones](../../milestones?state=closed) for release notes.**
 
