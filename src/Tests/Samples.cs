@@ -14,6 +14,7 @@ public class Samples
     }
 
     [Test]
+    [Explicit]
     public async Task DeviceList()
     {
         var devices = await service.GetDeviceListAsync();
@@ -21,6 +22,7 @@ public class Samples
     }
 
     [Test]
+    [Explicit]
     public async Task GeneratePreviews()
     {
         var html =

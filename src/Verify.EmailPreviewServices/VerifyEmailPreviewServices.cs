@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace VerifyTests;
+﻿namespace VerifyTests;
 
 public static class VerifyEmailPreviewServices
 {
@@ -35,12 +33,6 @@ public static class VerifyEmailPreviewServices
             return apiKey;
         }
     }
-}
-
-public class EmailPreview
-{
-    public required string Html { get; init; }
-    public required List<Device> Devices { get; init; }
 }
 
 public enum Device

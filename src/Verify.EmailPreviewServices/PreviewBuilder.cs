@@ -35,7 +35,7 @@
         }
 
         await service.DeletePreviewAsync(preview.Id);
-        return new(instance, targets);
+        return new(null, targets);
     }
 
     static async Task<ICollection<DevicePreviewData>> GetDevicePreviews(EmailPreviewData preview)
