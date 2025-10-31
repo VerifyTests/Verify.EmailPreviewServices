@@ -12,6 +12,7 @@
         var memoryStream = new MemoryStream();
         await image.SaveAsPngAsync(memoryStream);
         memoryStream.Position = 0;
+        await stream.DisposeAsync();
         return memoryStream;
     }
 
