@@ -60,12 +60,13 @@
             return;
         }
 
-        image.Mutate(x => x.Crop(new(
-            spec.Left,
-            spec.Top,
-            image.Width - spec.Left - spec.Right,
-            image.Height - spec.Top - spec.Bottom
-        )));
+        image.Mutate(_ =>
+            _.Crop(new(
+                spec.Left,
+                spec.Top,
+                image.Width - spec.Left - spec.Right,
+                image.Height - spec.Top - spec.Bottom
+            )));
     }
 
     static void RemoveBottom(Image<Rgba32> image, int? tolerance)
@@ -105,6 +106,7 @@
         {
             bottom += 25;
         }
+
         // Crop to content bounds
         if (bottom < height)
         {
