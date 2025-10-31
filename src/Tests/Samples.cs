@@ -65,10 +65,7 @@ public class Samples
 
     [Test]
     [Explicit]
-    public async Task GenerateAll([Values(Device.AppleMailDark,
-            Device.Windows10MailLight,
-            Device.WPpl)]
-        Device device)
+    public async Task GenerateAll([Values] Device device)
     {
         var preview = new EmailPreview
         {
