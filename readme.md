@@ -120,11 +120,13 @@ public async Task GeneratePreview()
 
 ### Result
 
-For OutlookWebDarkModeChrome:
+
+#### For OutlookWebDarkModeChrome:
 
 <img src="/src/Tests/Samples.GeneratePreview%23OutlookWebDarkModeChrome.verified.webp" height="200px">
 
-For Android9:
+
+#### For Android9:
 
 <img src="/src/Tests/Samples.GeneratePreview%23iPhone13.verified.webp" height="200px">
 
