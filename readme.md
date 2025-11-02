@@ -114,7 +114,7 @@ public async Task GeneratePreview()
     await Verify(preview);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L82-L100' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L98-L116' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
