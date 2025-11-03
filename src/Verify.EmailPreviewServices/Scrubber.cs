@@ -33,8 +33,6 @@
             image.Width - spec.Left - spec.Right,
             image.Height - spec.Top - spec.Bottom
         );
-        var rectangleWidth = rectangle.Left + rectangle.Width;
-        var rectangleHeight = rectangle.Top + rectangle.Height;
         image.Mutate(_ => _.Crop(rectangle));
     }
 
