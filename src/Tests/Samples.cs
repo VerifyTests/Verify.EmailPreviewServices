@@ -79,22 +79,6 @@ public class Samples
         await Verify(preview);
     }
 
-    [Test]
-    [Explicit]
-    public async Task Office365()
-    {
-        var preview = new EmailPreview
-        {
-            Html = html,
-            Devices =
-            [
-                Device.Office365Dark,
-                Device.Office365Light
-            ]
-        };
-        await Verify(preview);
-    }
-
     #region sample
 
     [Test]
