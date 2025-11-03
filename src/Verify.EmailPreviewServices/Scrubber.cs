@@ -22,18 +22,20 @@
 
     static void Crop(Image<Rgba32> image, ScrubSpec spec)
     {
-        if (spec is {Top: 0, Bottom: 0, Left: 0, Right: 0})
+        if (spec is { Top: 0, Bottom: 0, Left: 0, Right: 0 })
         {
             return;
         }
 
-        image.Mutate(_ =>
-            _.Crop(new(
-                spec.Left,
-                spec.Top,
-                image.Width - spec.Left - spec.Right,
-                image.Height - spec.Top - spec.Bottom
-            )));
+        var rectangle = new Rectangle(
+            spec.Left,
+            spec.Top,
+            image.Width - spec.Left - spec.Right,
+            image.Height - spec.Top - spec.Bottom
+        );
+        var rectangleWidth = rectangle.Left + rectangle.Width;
+        var rectangleHeight = rectangle.Top + rectangle.Height;
+        image.Mutate(_ => _.Crop(rectangle));
     }
 
     static void RemoveBottom(Image<Rgba32> image, int? tolerance)
@@ -77,13 +79,13 @@
         // Crop to content bounds
         if (bottom < height)
         {
-            image.Mutate(_ =>
-                _.Crop(new(
-                    0,
-                    0,
-                    image.Width,
-                    bottom
-                )));
+            var rectangle = new Rectangle(
+                0,
+                0,
+                image.Width,
+                bottom
+            );
+            image.Mutate(_ => _.Crop(rectangle));
         }
     }
 

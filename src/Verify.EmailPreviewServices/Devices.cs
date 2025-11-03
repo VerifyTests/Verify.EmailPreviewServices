@@ -197,6 +197,22 @@ static class Devices
                 Right = 25,
                 Bottom = 15
             },
+            [Device.Office365Dark] = new()
+            {
+                Top = 250,
+                BottomTolerance = 10,
+                Left = 280,
+                Right = 25,
+                Bottom = 0
+            },
+            [Device.Office365Light] = new()
+            {
+                Top = 250,
+                BottomTolerance = 20,
+                Left = 280,
+                Right = 25,
+                Bottom = 0
+            },
             [Device.Outlook2007] = new()
             {
                 Top = 191,
