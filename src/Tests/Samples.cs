@@ -1,4 +1,6 @@
-﻿[TestFixture]
+﻿using VerifyTests.EmailPreviewServices;
+
+[TestFixture]
 public class Samples
 {
     #region html

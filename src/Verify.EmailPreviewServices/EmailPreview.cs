@@ -1,4 +1,4 @@
-﻿namespace VerifyTests;
+﻿namespace VerifyTests.EmailPreviewServices;
 
 public class EmailPreview
 {
