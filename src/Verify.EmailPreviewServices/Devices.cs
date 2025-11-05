@@ -261,6 +261,22 @@ static class Devices
                 Right = 29,
                 Bottom = 13
             },
+            [Device.Outlook2019MacDark] = new()
+            {
+                Top = 166,
+                BottomTolerance = 10,
+                Left = 23,
+                Right = 10,
+                Bottom = 10
+            },
+            [Device.Outlook2019MacLight] = new()
+            {
+                Top = 231,
+                BottomTolerance = 10,
+                Left = 23,
+                Right = 10,
+                Bottom = 10
+            },
             [Device.OutlookWebChrome] = new()
             {
                 Top = 255,
