@@ -16,6 +16,6 @@
     <PackageVersion Include="Verify.Http" Version="7.5.0" />
     <PackageVersion Include="Verify.ImageMagick" Version="3.8.0" />
     <PackageVersion Include="Verify.NUnit" Version="31.7.2" />
-    <PackageVersion Include="Microsoft.Sbom.Targets" Version="4.1.4" />>
+    <PackageVersion Include="Microsoft.Sbom.Targets" Version="4.1.4" />
   </ItemGroup>
 </Project>
