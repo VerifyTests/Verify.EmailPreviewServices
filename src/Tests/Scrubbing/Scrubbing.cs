@@ -5,7 +5,7 @@ public class Scrubbing
 
     static Scrubbing()
     {
-        var project = AttributeReader.GetProjectDirectory();
+        var project = ProjectFiles.ProjectDirectory;
         path = Path.Combine(project, "Scrubbing");
     }
     // [Test]
