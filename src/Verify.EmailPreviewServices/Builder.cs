@@ -75,13 +75,18 @@
             await Task.Delay(1000);
             var previews = await Service.GetPreviewAsync(preview.Id);
 
-            var failed = previews.Previews.SingleOrDefault(_ => _.Status == DevicePreviewDataStatus.FAILED);
-            if (failed != null)
+            var failed = previews
+                .Previews
+                .Where(_ => _.Status == DevicePreviewDataStatus.FAILED)
+                .Select(_=>_.DeviceKey)
+                .ToList();
+            if (failed.Count > 0)
             {
-                throw new($"Preview failed to generate. DeviceKey: {failed.DeviceKey}");
+                throw new($"Preview failed to generate. DeviceKeys: {string.Join(", ", failed)}");
             }
 
-            if (previews.Previews.All(_ => _.Status == DevicePreviewDataStatus.SUCCESSFUL))
+            if (previews.Previews
+                .All(_ => _.Status == DevicePreviewDataStatus.SUCCESSFUL))
             {
                 return;
             }
