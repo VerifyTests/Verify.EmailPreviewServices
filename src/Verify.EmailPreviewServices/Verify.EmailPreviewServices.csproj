@@ -7,7 +7,7 @@
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
     <PackageReference Include="Verify" />
     <PackageReference Include="SixLabors.ImageSharp" />
-    <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" Condition="$(Configuration)=='Release'" />
+    <PackageReference Include="Microsoft.Sbom.Targets" PrivateAssets="all" Condition="'$(CI)' == 'true'" />
     <Compile Include="..\Swagger\EmailPreviewServicesClient.cs">
       <Link>EmailPreviewServicesClient.cs</Link>
     </Compile>
