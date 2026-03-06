@@ -20,7 +20,11 @@ The purpose of this project is provide faster feedback when using code to genera
 
 [Entity Framework Extensions](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.EmailPreviewServices) is a major sponsor and is proud to contribute to the development this project.
 
-[![Entity Framework Extensions](https://raw.githubusercontent.com/VerifyTests/Verify.EmailPreviewServices/refs/heads/main/docs/zzz.png)](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.EmailPreviewServices)<!-- endInclude -->
+[![Entity Framework Extensions](https://raw.githubusercontent.com/VerifyTests/Verify.EmailPreviewServices/refs/heads/main/docs/zzz.png)](https://entityframework-extensions.net/?utm_source=simoncropp&utm_medium=Verify.EmailPreviewServices)
+
+### Developed using JetBrains IDEs
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport)<!-- endInclude -->
 
 
 ## NuGet
