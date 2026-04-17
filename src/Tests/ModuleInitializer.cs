@@ -22,6 +22,6 @@
     {
         VerifyDiffPlex.Initialize(OutputType.Compact);
         VerifierSettings.InitializePlugins();
-        VerifyImageMagick.RegisterComparers();
+        VerifierSettings.UseSsimForPng();
     }
 }
