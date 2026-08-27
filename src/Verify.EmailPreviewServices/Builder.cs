@@ -48,7 +48,7 @@
     static async Task AddTargets(EmailPreviewData preview, List<Target> targets)
     {
         using var fileResponse = await Service.GetPreviewZipAsync(preview.Id);
-        using var zipArchive = new ZipArchive(fileResponse.Stream, ZipArchiveMode.Read);
+        await using var zipArchive = new ZipArchive(fileResponse.Stream, ZipArchiveMode.Read);
         foreach (var entry in zipArchive.Entries)
         {
             var device = Devices.DeviceForKey(Path.GetFileNameWithoutExtension(entry.Name));
