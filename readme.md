@@ -93,7 +93,7 @@ static string html =
     </html>
     """;
 ```
-<sup><a href='/src/Tests/Samples.cs#L6-L33' title='Snippet source file'>snippet source</a> | <a href='#snippet-html' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L5-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-html' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -118,7 +118,7 @@ public async Task GeneratePreview()
     await Verify(preview);
 }
 ```
-<sup><a href='/src/Tests/Samples.cs#L84-L102' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Samples.cs#L85-L103' title='Snippet source file'>snippet source</a> | <a href='#snippet-sample' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 

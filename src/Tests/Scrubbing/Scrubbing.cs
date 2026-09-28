@@ -1,4 +1,3 @@
-﻿[TestFixture]
 public class Scrubbing
 {
     static readonly string path;
@@ -9,7 +8,7 @@ public class Scrubbing
         path = Path.Combine(project, "Scrubbing");
     }
     // [Test]
-    // public void Foo([Values] Device device)
+    // public void Foo([Matrix] Device device)
     // {
     //     var combine = Path.Combine(path, $"{device}.png");
     //     if (File.Exists(combine))
@@ -19,10 +18,12 @@ public class Scrubbing
     // }
 
     [Test]
-    public async Task ScrubTesting([Values] Device device)
+    [MatrixDataSource]
+    public async Task ScrubTesting([Matrix] Device device)
     {
         var fileStream = File.OpenRead(Path.Combine(path, $"{device}.jpg"));
         var scrubbed = await Scrubber.Scrub(fileStream, device);
-        await Verify(scrubbed, extension: "webp");
+        await Verify(scrubbed, extension: "webp")
+            .UseParameters(device);
     }
 }

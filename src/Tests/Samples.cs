@@ -1,6 +1,5 @@
 ﻿using VerifyTests.EmailPreviewServices;
 
-[TestFixture]
 public class Samples
 {
     #region html
@@ -70,15 +69,17 @@ public class Samples
     }
 
     [Test]
+    [MatrixDataSource]
     [Explicit]
-    public async Task GenerateAll([Values] Device device)
+    public async Task GenerateAll([Matrix] Device device)
     {
         var preview = new EmailPreview
         {
             Html = html,
             Devices = [device]
         };
-        await Verify(preview);
+        await Verify(preview)
+            .UseParameters(device);
     }
 
     #region sample
